@@ -1,0 +1,448 @@
+To run the Ansible command, you can run:
+export PYTHONPATH=/opt/konvoy/ansible/lib/python3.7/site-packages
+export ANSIBLE_CONFIG=/opt/konvoy/ansible/playbooks/ansible.cfg
+/opt/konvoy/ansible/bin/ansible-playbook /opt/konvoy/ansible/playbooks/deploy-kubernetes.yaml -i inventory.yaml --extra-vars {"working_directory":"/tmp/konvoy/lab","rpms_tar_file":"","debs_tar_file":"","certificate_key":"9eefdb078bae727f0fafe6883167df42a261956b7365abd7f5b8fe774e8e7d60","encryption_token":"oCQufWoq2fHfTkvKUXmZuAEFqISc9lJbi8A67M8/nIk=","keepalived_vrid":42,"node_imagefs_volume_devices":{"control-plane":"xvdb","worker":"xvdb"},"node_labels":{},"node_taints":{},"node_nvidia_gpu":{"worker":false},"provisioner":"aws","image_registries_with_auth":[],"default_image_registry":"","default_image_registry_mirrors":{}} --extra-vars @/tmp/konvoy/lab/runs/Deploying Kubernetes/2020-07-08-03-24-06/cluster.yaml --limit 10.0.202.203,10.0.193.240,10.0.198.182,10.0.128.115,10.0.134.193,10.0.136.223,10.0.142.250
+
+Complete environment:
+PATH=/opt/konvoy/ansible/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=ip-172-31-39-232.ec2.internal
+TERM=xterm
+KUBECONFIG=/home/centos/.kube/config
+KONVOY_EXECUTABLE_DIR=/opt/konvoy/artifacts
+KONVOY_COMMAND_ARG=konvoy
+KONVOY_USER_OS=linux
+PROVIDERS_PATH=/opt/konvoy/providers
+TERRAFORM_PLUGINS_PATH=/opt/konvoy/providers/.terraform/plugins-cache
+ANSIBLE_PATH=/opt/konvoy/ansible
+HOME=/home/centos
+PYTHONPATH=/opt/konvoy/ansible/lib/python3.7/site-packages
+ANSIBLE_CONFIG=/opt/konvoy/ansible/playbooks/ansible.cfg
+ANSIBLE_FORCE_COLOR=true
+
+PLAY [Bootstrap First Control Plane] *************************************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************************************
+[0;32mok: [10.0.193.240][0m
+
+TASK [keepalived-manifests : check if keepalived.yaml already exists] ****************************************************************************************
+[0;36mskipping: [10.0.193.240][0m
+
+TASK [keepalived-manifests : slurp keepalived.yaml from first control-plane node] ****************************************************************************
+[0;36mskipping: [10.0.193.240][0m
+
+TASK [keepalived-manifests : base64 decode keepalived.yaml file] *********************************************************************************************
+[0;36mskipping: [10.0.193.240][0m
+
+TASK [keepalived-manifests : extract vrid value from keepalived.yaml] ****************************************************************************************
+[0;36mskipping: [10.0.193.240][0m
+
+TASK [keepalived-manifests : detect a keepalived interface by ip] ********************************************************************************************
+[0;36mskipping: [10.0.193.240][0m
+
+TASK [keepalived-manifests : detect a keepalived interface by route] *****************************************************************************************
+[0;36mskipping: [10.0.193.240][0m
+
+TASK [keepalived-manifests : set keepalived interface] *******************************************************************************************************
+[0;36mskipping: [10.0.193.240][0m
+
+TASK [kubeadm-first-control-plane : create kubernetes directories] *******************************************************************************************
+[0;32mok: [10.0.193.240] => (item=/etc/kubernetes/)[0m
+[0;33mchanged: [10.0.193.240] => (item=/etc/kubernetes/pki)[0m
+
+TASK [kubeadm-first-control-plane : check /var/lib/waagent] **************************************************************************************************
+[0;36mskipping: [10.0.193.240][0m
+
+TASK [kubeadm-first-control-plane : run /var/lib/waagent/CustomData script] **********************************************************************************
+[0;36mskipping: [10.0.193.240][0m
+
+TASK [kubeadm-first-control-plane : check cloud.conf in homedir] *********************************************************************************************
+[0;36mskipping: [10.0.193.240][0m
+
+TASK [kubeadm-first-control-plane : create cloud-config directory] *******************************************************************************************
+[0;36mskipping: [10.0.193.240] => (item=/etc/kubernetes/cloud-config) [0m
+
+TASK [kubeadm-first-control-plane : copy cloud.conf from homedir to /etc/kubernetes] *************************************************************************
+[0;36mskipping: [10.0.193.240][0m
+
+TASK [kubeadm-first-control-plane : create etcd directories] *************************************************************************************************
+[0;33mchanged: [10.0.193.240] => (item=/var/lib/etcd)[0m
+
+TASK [kubeadm-first-control-plane : check if kubeadm has already run] ****************************************************************************************
+[0;32mok: [10.0.193.240][0m
+
+TASK [kubeadm-first-control-plane : create audit-policy directory] *******************************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+TASK [kubeadm-first-control-plane : copy apiserver-audit-policy.yaml to remote] ******************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+TASK [kubeadm-first-control-plane : check if encryption-config.yaml already exist] ***************************************************************************
+[0;32mok: [10.0.193.240][0m
+
+TASK [kubeadm-first-control-plane : copy encryption-config.yaml to remote] ***********************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+TASK [kubeadm-first-control-plane : check if running inside AWS] *********************************************************************************************
+[0;32mok: [10.0.193.240][0m
+
+TASK [kubeadm-first-control-plane : collect aws metadata facts] **********************************************************************************************
+[0;32mok: [10.0.193.240][0m
+
+TASK [kubeadm-first-control-plane : copy kubeadm-init-config.yaml to remote] *********************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+TASK [kubeadm-first-control-plane : run kubeadm init] ********************************************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+TASK [kubeadm-first-control-plane : wait for manifest directory] *********************************************************************************************
+[0;36mskipping: [10.0.193.240][0m
+
+TASK [kubeadm-first-control-plane : copy keepalived.yaml to remote] ******************************************************************************************
+[0;36mskipping: [10.0.193.240][0m
+
+TASK [kubeadm-first-control-plane : wait for kubeadm init to finish] *****************************************************************************************
+[1;30mFAILED - RETRYING: wait for kubeadm init to finish (20 retries left).[0m
+[1;30mFAILED - RETRYING: wait for kubeadm init to finish (19 retries left).[0m
+[0;33mchanged: [10.0.193.240][0m
+
+RUNNING HANDLER [kubeadm-first-control-plane : kubelet health] ***********************************************************************************************
+[0;32mok: [10.0.193.240][0m
+
+RUNNING HANDLER [kubeadm-first-control-plane : etcd health] **************************************************************************************************
+[0;32mok: [10.0.193.240][0m
+
+RUNNING HANDLER [kubeadm-first-control-plane : kube-apiserver health] ****************************************************************************************
+[0;32mok: [10.0.193.240][0m
+
+RUNNING HANDLER [kubeadm-first-control-plane : kube-controller-manager health] *******************************************************************************
+[0;32mok: [10.0.193.240][0m
+
+RUNNING HANDLER [kubeadm-first-control-plane : kube-scheduler health] ****************************************************************************************
+[0;32mok: [10.0.193.240][0m
+
+TASK [fetch-kubeconfig : fetch admin kubeconfig] *************************************************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+TASK [fetch-kubeconfig : add a warning about modifying admin.conf file] **************************************************************************************
+[0;33mchanged: [10.0.193.240 -> localhost][0m
+
+TASK [coredns-cache-disable : disable coredns cache] *********************************************************************************************************
+[0;33mchanged: [10.0.193.240] => (item=data:[0m
+[0;33m  Corefile: |[0m
+[0;33m    .:53 {[0m
+[0;33m        errors[0m
+[0;33m        health[0m
+[0;33m        ready[0m
+[0;33m        kubernetes cluster.local in-addr.arpa ip6.arpa {[0m
+[0;33m           pods insecure[0m
+[0;33m           fallthrough in-addr.arpa ip6.arpa[0m
+[0;33m        }[0m
+[0;33m        prometheus :9153[0m
+[0;33m        forward . /etc/resolv.conf[0m
+[0;33m        loop[0m
+[0;33m        reload[0m
+[0;33m        loadbalance[0m
+[0;33m    })[0m
+
+TASK [kubeadm-etcd-metrics : create system metrics namespace] ************************************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+TASK [kubeadm-etcd-metrics : create etcd secret in the system-metrics namespace] *****************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+TASK [cert-manager-ca : create cert-manager namespace] *******************************************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+TASK [cert-manager-ca : store kubernetes root ca cert and key as secret] *************************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+TASK [marker-file : write out marker file] *******************************************************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+PLAY [Bootstrap Additional Control Plane] ********************************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************************************
+[0;32mok: [10.0.198.182][0m
+[0;32mok: [10.0.202.203][0m
+
+TASK [keepalived-manifests : check if keepalived.yaml already exists] ****************************************************************************************
+[0;36mskipping: [10.0.198.182][0m
+[0;36mskipping: [10.0.202.203][0m
+
+TASK [keepalived-manifests : slurp keepalived.yaml from first control-plane node] ****************************************************************************
+[0;36mskipping: [10.0.198.182][0m
+[0;36mskipping: [10.0.202.203][0m
+
+TASK [keepalived-manifests : base64 decode keepalived.yaml file] *********************************************************************************************
+[0;36mskipping: [10.0.198.182][0m
+[0;36mskipping: [10.0.202.203][0m
+
+TASK [keepalived-manifests : extract vrid value from keepalived.yaml] ****************************************************************************************
+[0;36mskipping: [10.0.198.182][0m
+[0;36mskipping: [10.0.202.203][0m
+
+TASK [keepalived-manifests : detect a keepalived interface by ip] ********************************************************************************************
+[0;36mskipping: [10.0.198.182][0m
+[0;36mskipping: [10.0.202.203][0m
+
+TASK [keepalived-manifests : detect a keepalived interface by route] *****************************************************************************************
+[0;36mskipping: [10.0.198.182][0m
+[0;36mskipping: [10.0.202.203][0m
+
+TASK [keepalived-manifests : set keepalived interface] *******************************************************************************************************
+[0;36mskipping: [10.0.198.182][0m
+[0;36mskipping: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : create kubernetes directories] **************************************************************************************
+[0;32mok: [10.0.198.182] => (item=/etc/kubernetes/)[0m
+[0;32mok: [10.0.202.203] => (item=/etc/kubernetes/)[0m
+[0;33mchanged: [10.0.198.182] => (item=/etc/kubernetes/pki)[0m
+[0;33mchanged: [10.0.202.203] => (item=/etc/kubernetes/pki)[0m
+
+TASK [kubeadm-additional-control-plane : check /var/lib/waagent] *********************************************************************************************
+[0;36mskipping: [10.0.198.182][0m
+[0;36mskipping: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : run /var/lib/waagent/CustomData script] *****************************************************************************
+[0;36mskipping: [10.0.198.182][0m
+[0;36mskipping: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : check cloud.conf in homedir] ****************************************************************************************
+[0;36mskipping: [10.0.198.182][0m
+[0;36mskipping: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : create cloud-config directories] ************************************************************************************
+[0;36mskipping: [10.0.198.182] => (item=/etc/kubernetes/cloud-config) [0m
+[0;36mskipping: [10.0.202.203] => (item=/etc/kubernetes/cloud-config) [0m
+
+TASK [kubeadm-additional-control-plane : copy cloud.conf from homedir to /etc/kubernetes] ********************************************************************
+[0;36mskipping: [10.0.198.182][0m
+[0;36mskipping: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : check if kubeadm has already run] ***********************************************************************************
+[0;32mok: [10.0.198.182][0m
+[0;32mok: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : check if encryption-config.yaml already exist] **********************************************************************
+[0;32mok: [10.0.198.182][0m
+[0;32mok: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : create audit-policy directory] **************************************************************************************
+[0;33mchanged: [10.0.198.182][0m
+[0;33mchanged: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : copy apiserver-audit-policy.yaml to remote] *************************************************************************
+[0;33mchanged: [10.0.198.182][0m
+[0;33mchanged: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : slurp encryption-config.yaml from first control-plane node] *********************************************************
+[0;32mok: [10.0.198.182 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+[0;32mok: [10.0.202.203 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+
+TASK [kubeadm-additional-control-plane : base64 decode encryption-config.yaml file] **************************************************************************
+[0;32mok: [10.0.198.182][0m
+[0;32mok: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : extract secret value from encryption-config.yaml] *******************************************************************
+[0;32mok: [10.0.198.182][0m
+[0;32mok: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : copy encryption-config.yaml to remote] ******************************************************************************
+[0;33mchanged: [10.0.198.182][0m
+[0;33mchanged: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : upload certificates] ************************************************************************************************
+[0;33mchanged: [10.0.198.182 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+[0;33mchanged: [10.0.202.203 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+
+TASK [kubeadm-additional-control-plane : create a new bootstrap token] ***************************************************************************************
+[0;33mchanged: [10.0.198.182 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+[0;33mchanged: [10.0.202.203 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+
+TASK [kubeadm-additional-control-plane : extract bootstrap token and CA hash] ********************************************************************************
+[0;32mok: [10.0.198.182][0m
+[0;32mok: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : check if running inside AWS] ****************************************************************************************
+[0;32mok: [10.0.198.182][0m
+[0;32mok: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : collect aws metadata facts] *****************************************************************************************
+[0;32mok: [10.0.198.182][0m
+[0;32mok: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : copy kubeadm-join-config.yaml to remote] ****************************************************************************
+[0;33mchanged: [10.0.198.182][0m
+[0;33mchanged: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : run kubeadm join phase preflight on additional control-plane nodes] *************************************************
+[0;33mchanged: [10.0.198.182][0m
+[0;33mchanged: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : run kubeadm join phase control-plane-prepare on additional control-plane nodes] *************************************
+[0;33mchanged: [10.0.202.203][0m
+[0;33mchanged: [10.0.198.182][0m
+
+TASK [kubeadm-additional-control-plane : run kubeadm join phase kubelet-start on additional control-plane nodes] *********************************************
+[0;33mchanged: [10.0.198.182][0m
+[0;33mchanged: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : run kubeadm join phase control-plane-join etcd on additional control-plane nodes] ***********************************
+[0;33mchanged: [10.0.198.182][0m
+[0;33mchanged: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : run kubeadm join phase control-plane-join update-status on additional control-plane nodes] **************************
+[0;33mchanged: [10.0.198.182][0m
+[0;33mchanged: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : run kubeadm join phase control-plane-join mark-control-plane on additional control-plane nodes] *********************
+[0;33mchanged: [10.0.198.182][0m
+[0;33mchanged: [10.0.202.203][0m
+
+TASK [kubeadm-additional-control-plane : delete bootstrap token] *********************************************************************************************
+[0;33mchanged: [10.0.198.182 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+[0;33mchanged: [10.0.202.203 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+
+TASK [kubeadm-additional-control-plane : copy keepalived.yaml to remote] *************************************************************************************
+[0;36mskipping: [10.0.198.182][0m
+[0;36mskipping: [10.0.202.203][0m
+
+RUNNING HANDLER [kubeadm-additional-control-plane : kubelet health] ******************************************************************************************
+[0;32mok: [10.0.202.203][0m
+[0;32mok: [10.0.198.182][0m
+
+RUNNING HANDLER [kubeadm-additional-control-plane : etcd health] *********************************************************************************************
+[0;32mok: [10.0.198.182][0m
+[0;32mok: [10.0.202.203][0m
+
+RUNNING HANDLER [kubeadm-additional-control-plane : kube-apiserver health] ***********************************************************************************
+[1;30mFAILED - RETRYING: kube-apiserver health (6 retries left).[0m
+[0;32mok: [10.0.198.182][0m
+[1;30mFAILED - RETRYING: kube-apiserver health (5 retries left).[0m
+[0;32mok: [10.0.202.203][0m
+
+RUNNING HANDLER [kubeadm-additional-control-plane : kube-controller-manager health] **************************************************************************
+[0;32mok: [10.0.198.182][0m
+[0;32mok: [10.0.202.203][0m
+
+RUNNING HANDLER [kubeadm-additional-control-plane : kube-scheduler health] ***********************************************************************************
+[0;32mok: [10.0.198.182][0m
+[0;32mok: [10.0.202.203][0m
+
+RUNNING HANDLER [kubeadm-additional-control-plane : kube-proxy health] ***************************************************************************************
+[0;32mok: [10.0.198.182][0m
+[0;32mok: [10.0.202.203][0m
+
+TASK [marker-file : write out marker file] *******************************************************************************************************************
+[0;33mchanged: [10.0.198.182][0m
+[0;33mchanged: [10.0.202.203][0m
+
+PLAY [Bootstrap Nodes] ***************************************************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************************************
+[0;32mok: [10.0.128.115][0m
+[0;32mok: [10.0.136.223][0m
+[0;32mok: [10.0.134.193][0m
+[0;32mok: [10.0.142.250][0m
+
+TASK [kubeadm-nodes : check /var/lib/waagent] ****************************************************************************************************************
+[0;32mok: [10.0.128.115][0m
+[0;32mok: [10.0.134.193][0m
+[0;32mok: [10.0.136.223][0m
+[0;32mok: [10.0.142.250][0m
+
+TASK [kubeadm-nodes : run /var/lib/waagent/CustomData script] ************************************************************************************************
+[0;36mskipping: [10.0.128.115][0m
+[0;36mskipping: [10.0.134.193][0m
+[0;36mskipping: [10.0.136.223][0m
+[0;36mskipping: [10.0.142.250][0m
+
+TASK [kubeadm-nodes : check cloud.conf in homedir] ***********************************************************************************************************
+[0;32mok: [10.0.128.115][0m
+[0;32mok: [10.0.134.193][0m
+[0;32mok: [10.0.136.223][0m
+[0;32mok: [10.0.142.250][0m
+
+TASK [kubeadm-nodes : create kubernetes directories] *********************************************************************************************************
+[0;32mok: [10.0.128.115] => (item=/etc/kubernetes/)[0m
+[0;32mok: [10.0.134.193] => (item=/etc/kubernetes/)[0m
+[0;32mok: [10.0.136.223] => (item=/etc/kubernetes/)[0m
+[0;33mchanged: [10.0.128.115] => (item=/etc/kubernetes/pki)[0m
+[0;32mok: [10.0.142.250] => (item=/etc/kubernetes/)[0m
+[0;33mchanged: [10.0.136.223] => (item=/etc/kubernetes/pki)[0m
+[0;33mchanged: [10.0.134.193] => (item=/etc/kubernetes/pki)[0m
+[0;33mchanged: [10.0.128.115] => (item=/etc/kubernetes/cloud-config)[0m
+[0;33mchanged: [10.0.142.250] => (item=/etc/kubernetes/pki)[0m
+[0;33mchanged: [10.0.136.223] => (item=/etc/kubernetes/cloud-config)[0m
+[0;33mchanged: [10.0.134.193] => (item=/etc/kubernetes/cloud-config)[0m
+[0;33mchanged: [10.0.142.250] => (item=/etc/kubernetes/cloud-config)[0m
+
+TASK [kubeadm-nodes : copy cloud.conf from homedir to /etc/kubernetes] ***************************************************************************************
+[0;36mskipping: [10.0.128.115][0m
+[0;36mskipping: [10.0.134.193][0m
+[0;36mskipping: [10.0.136.223][0m
+[0;36mskipping: [10.0.142.250][0m
+
+TASK [kubeadm-nodes : check if kubeadm has already run] ******************************************************************************************************
+[0;32mok: [10.0.128.115][0m
+[0;32mok: [10.0.134.193][0m
+[0;32mok: [10.0.136.223][0m
+[0;32mok: [10.0.142.250][0m
+
+TASK [kubeadm-nodes : create a new bootstrap token] **********************************************************************************************************
+[0;33mchanged: [10.0.128.115 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+[0;33mchanged: [10.0.134.193 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+[0;33mchanged: [10.0.136.223 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+[0;33mchanged: [10.0.142.250 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+
+TASK [kubeadm-nodes : extract bootstrap token and CA hash] ***************************************************************************************************
+[0;32mok: [10.0.128.115][0m
+[0;32mok: [10.0.134.193][0m
+[0;32mok: [10.0.136.223][0m
+[0;32mok: [10.0.142.250][0m
+
+TASK [kubeadm-nodes : check if running inside AWS] ***********************************************************************************************************
+[0;32mok: [10.0.128.115][0m
+[0;32mok: [10.0.134.193][0m
+[0;32mok: [10.0.136.223][0m
+[0;32mok: [10.0.142.250][0m
+
+TASK [kubeadm-nodes : collect aws metadata facts] ************************************************************************************************************
+[0;32mok: [10.0.128.115][0m
+[0;32mok: [10.0.134.193][0m
+[0;32mok: [10.0.136.223][0m
+[0;32mok: [10.0.142.250][0m
+
+TASK [kubeadm-nodes : copy kubeadm-join-config.yaml to remote] ***********************************************************************************************
+[0;33mchanged: [10.0.128.115][0m
+[0;33mchanged: [10.0.136.223][0m
+[0;33mchanged: [10.0.134.193][0m
+[0;33mchanged: [10.0.142.250][0m
+
+TASK [kubeadm-nodes : run kubeadm join] **********************************************************************************************************************
+[0;33mchanged: [10.0.136.223][0m
+[0;33mchanged: [10.0.128.115][0m
+[0;33mchanged: [10.0.134.193][0m
+[0;33mchanged: [10.0.142.250][0m
+
+TASK [kubeadm-nodes : delete bootstrap token] ****************************************************************************************************************
+[0;33mchanged: [10.0.128.115 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+[0;33mchanged: [10.0.134.193 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+[0;33mchanged: [10.0.136.223 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+[0;33mchanged: [10.0.142.250 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+
+TASK [marker-file : write out marker file] *******************************************************************************************************************
+[0;33mchanged: [10.0.134.193][0m
+[0;33mchanged: [10.0.128.115][0m
+[0;33mchanged: [10.0.136.223][0m
+[0;33mchanged: [10.0.142.250][0m
+
+PLAY RECAP ***************************************************************************************************************************************************
+[0;33m10.0.128.115[0m               : [0;32mok=13  [0m [0;33mchanged=6   [0m unreachable=0    failed=0   
+[0;33m10.0.134.193[0m               : [0;32mok=13  [0m [0;33mchanged=6   [0m unreachable=0    failed=0   
+[0;33m10.0.136.223[0m               : [0;32mok=13  [0m [0;33mchanged=6   [0m unreachable=0    failed=0   
+[0;33m10.0.142.250[0m               : [0;32mok=13  [0m [0;33mchanged=6   [0m unreachable=0    failed=0   
+[0;33m10.0.193.240[0m               : [0;32mok=26  [0m [0;33mchanged=16  [0m unreachable=0    failed=0   
+[0;33m10.0.198.182[0m               : [0;32mok=30  [0m [0;33mchanged=15  [0m unreachable=0    failed=0   
+[0;33m10.0.202.203[0m               : [0;32mok=30  [0m [0;33mchanged=15  [0m unreachable=0    failed=0   
+

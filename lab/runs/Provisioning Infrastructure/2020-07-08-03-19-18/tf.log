@@ -1,0 +1,2195 @@
+
+[0m[1mInitializing provider plugins...[0m
+
+[0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+[0m[1mRefreshing Terraform state in-memory prior to plan...[0m
+The refreshed state will be used to calculate this plan, but will not be
+persisted to local or remote state storage.
+[0m
+[0m[1mdata.aws_availability_zones.available: Refreshing state...[0m
+[0m[1mdata.aws_region.current: Refreshing state...[0m
+
+------------------------------------------------------------------------
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  [32m+[0m create
+[0m
+Terraform will perform the following actions:
+
+[32m  [32m+[0m [32maws_default_route_table.konvoy_router
+[0m      id:                                        <computed>
+      default_route_table_id:                    "${var.vpc_route_table_id == \"\" ? join(\",\", aws_vpc.konvoy.*.default_route_table_id) : var.vpc_route_table_id}"
+      owner_id:                                  <computed>
+      route.#:                                   <computed>
+      tags.%:                                    <computed>
+      vpc_id:                                    <computed>
+[0m
+[0m[32m  [32m+[0m [32maws_ebs_volume.control_plane_imagefs[0]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      availability_zone:                         "us-east-1a"
+      encrypted:                                 <computed>
+      iops:                                      <computed>
+      kms_key_id:                                <computed>
+      size:                                      "160"
+      snapshot_id:                               <computed>
+      tags.%:                                    <computed>
+      type:                                      "gp2"
+[0m
+[0m[32m  [32m+[0m [32maws_ebs_volume.control_plane_imagefs[1]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      availability_zone:                         "us-east-1b"
+      encrypted:                                 <computed>
+      iops:                                      <computed>
+      kms_key_id:                                <computed>
+      size:                                      "160"
+      snapshot_id:                               <computed>
+      tags.%:                                    <computed>
+      type:                                      "gp2"
+[0m
+[0m[32m  [32m+[0m [32maws_ebs_volume.control_plane_imagefs[2]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      availability_zone:                         "us-east-1c"
+      encrypted:                                 <computed>
+      iops:                                      <computed>
+      kms_key_id:                                <computed>
+      size:                                      "160"
+      snapshot_id:                               <computed>
+      tags.%:                                    <computed>
+      type:                                      "gp2"
+[0m
+[0m[32m  [32m+[0m [32maws_ebs_volume.worker_pool0_imagefs[0]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      availability_zone:                         "us-east-1a"
+      encrypted:                                 <computed>
+      iops:                                      <computed>
+      kms_key_id:                                <computed>
+      size:                                      "160"
+      snapshot_id:                               <computed>
+      tags.%:                                    <computed>
+      type:                                      "gp2"
+[0m
+[0m[32m  [32m+[0m [32maws_ebs_volume.worker_pool0_imagefs[1]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      availability_zone:                         "us-east-1b"
+      encrypted:                                 <computed>
+      iops:                                      <computed>
+      kms_key_id:                                <computed>
+      size:                                      "160"
+      snapshot_id:                               <computed>
+      tags.%:                                    <computed>
+      type:                                      "gp2"
+[0m
+[0m[32m  [32m+[0m [32maws_ebs_volume.worker_pool0_imagefs[2]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      availability_zone:                         "us-east-1c"
+      encrypted:                                 <computed>
+      iops:                                      <computed>
+      kms_key_id:                                <computed>
+      size:                                      "160"
+      snapshot_id:                               <computed>
+      tags.%:                                    <computed>
+      type:                                      "gp2"
+[0m
+[0m[32m  [32m+[0m [32maws_ebs_volume.worker_pool0_imagefs[3]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      availability_zone:                         "us-east-1d"
+      encrypted:                                 <computed>
+      iops:                                      <computed>
+      kms_key_id:                                <computed>
+      size:                                      "160"
+      snapshot_id:                               <computed>
+      tags.%:                                    <computed>
+      type:                                      "gp2"
+[0m
+[0m[32m  [32m+[0m [32maws_elb.konvoy_control_plane
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      availability_zones.#:                      <computed>
+      connection_draining:                       "true"
+      connection_draining_timeout:               "300"
+      cross_zone_load_balancing:                 "true"
+      dns_name:                                  <computed>
+      health_check.#:                            "1"
+      health_check.0.healthy_threshold:          "2"
+      health_check.0.interval:                   "10"
+      health_check.0.target:                     "TCP:6443"
+      health_check.0.timeout:                    "3"
+      health_check.0.unhealthy_threshold:        "2"
+      idle_timeout:                              "3600"
+      instances.#:                               <computed>
+      internal:                                  "false"
+      listener.#:                                "1"
+      listener.3838681924.instance_port:         "6443"
+      listener.3838681924.instance_protocol:     "tcp"
+      listener.3838681924.lb_port:               "6443"
+      listener.3838681924.lb_protocol:           "tcp"
+      listener.3838681924.ssl_certificate_id:    ""
+      name:                                      "${local.elb_name}"
+      security_groups.#:                         <computed>
+      source_security_group:                     <computed>
+      source_security_group_id:                  <computed>
+      subnets.#:                                 <computed>
+      tags.%:                                    <computed>
+      zone_id:                                   <computed>
+[0m
+[0m[32m  [32m+[0m [32maws_iam_instance_profile.node_profile
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      create_date:                               <computed>
+      name:                                      "${local.node_profile_name}"
+      path:                                      "/"
+      role:                                      "${aws_iam_role.node_role.name}"
+      roles.#:                                   <computed>
+      unique_id:                                 <computed>
+[0m
+[0m[32m  [32m+[0m [32maws_iam_role.node_role
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      assume_role_policy:                        "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"ec2.amazonaws.com\"\n      },\n      \"Effect\": \"Allow\",\n      \"Sid\": \"\"\n    }\n  ]\n}\n"
+      create_date:                               <computed>
+      force_detach_policies:                     "false"
+      max_session_duration:                      "3600"
+      name:                                      "${local.node_role_name}"
+      path:                                      "/"
+      unique_id:                                 <computed>
+[0m
+[0m[32m  [32m+[0m [32maws_iam_role_policy.agent_policy
+[0m      id:                                        <computed>
+      name:                                      "${local.node_policy_name}"
+      policy:                                    "{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Sid\": \"KubernetesCloudProvider\",\n            \"Action\": [\n              \"ec2:CreateTags\",\n              \"ec2:DeleteTags\",\n              \"ec2:DescribeTags\",\n              \"ec2:DescribeInstances\",\n              \"ec2:CreateVolume\",\n              \"ec2:DeleteVolume\",\n              \"ec2:AttachVolume\",\n              \"ec2:DetachVolume\",\n              \"ec2:DescribeVolumes\",\n              \"ec2:DescribeVolumeStatus\",\n              \"ec2:DescribeVolumeAttribute\",\n              \"ec2:CreateSnapshot\",\n              \"ec2:CopySnapshot\",\n              \"ec2:DeleteSnapshot\",\n              \"ec2:DescribeSnapshots\",\n              \"ec2:DescribeSnapshotAttribute\",\n              \"ec2:AuthorizeSecurityGroupIngress\",\n              \"ec2:CreateRoute\",\n              \"ec2:CreateSecurityGroup\",\n              \"ec2:DeleteSecurityGroup\",\n              \"ec2:DeleteRoute\",\n              \"ec2:DescribeRouteTables\",\n              \"ec2:DescribeSubnets\",\n              \"ec2:DescribeSecurityGroups\",\n              \"ec2:ModifyInstanceAttribute\",\n              \"ec2:RevokeSecurityGroupIngress\",\n              \"elasticloadbalancing:AttachLoadBalancerToSubnets\",\n              \"elasticloadbalancing:ApplySecurityGroupsToLoadBalancer\",\n              \"elasticloadbalancing:CreateLoadBalancer\",\n              \"elasticloadbalancing:CreateLoadBalancerPolicy\",\n              \"elasticloadbalancing:CreateLoadBalancerListeners\",\n              \"elasticloadbalancing:ConfigureHealthCheck\",\n              \"elasticloadbalancing:DeleteLoadBalancer\",\n              \"elasticloadbalancing:DeleteLoadBalancerListeners\",\n              \"elasticloadbalancing:DescribeLoadBalancers\",\n              \"elasticloadbalancing:DescribeLoadBalancerAttributes\",\n              \"elasticloadbalancing:DetachLoadBalancerFromSubnets\",\n              \"elasticloadbalancing:DeregisterInstancesFromLoadBalancer\",\n              \"elasticloadbalancing:ModifyLoadBalancerAttributes\",\n              \"elasticloadbalancing:RegisterInstancesWithLoadBalancer\",\n              \"elasticloadbalancing:SetLoadBalancerPoliciesForBackendServer\"\n            ],\n            \"Resource\": \"*\",\n            \"Effect\": \"Allow\"\n        }\n    ]\n}\n"
+      role:                                      "${aws_iam_role.node_role.id}"
+[0m
+[0m[32m  [32m+[0m [32maws_instance.control_plane[0]
+[0m      id:                                        <computed>
+      ami:                                       "ami-02eac2c0129f6376b"
+      arn:                                       <computed>
+      associate_public_ip_address:               "true"
+      availability_zone:                         "us-east-1a"
+      cpu_core_count:                            <computed>
+      cpu_threads_per_core:                      <computed>
+      ebs_block_device.#:                        <computed>
+      ephemeral_block_device.#:                  <computed>
+      get_password_data:                         "false"
+      host_id:                                   <computed>
+      iam_instance_profile:                      "${local.control_plane_instance_profile}"
+      instance_state:                            <computed>
+      instance_type:                             "m5.xlarge"
+      ipv6_address_count:                        <computed>
+      ipv6_addresses.#:                          <computed>
+      key_name:                                  "${local.cluster_name}"
+      network_interface.#:                       <computed>
+      network_interface_id:                      <computed>
+      password_data:                             <computed>
+      placement_group:                           <computed>
+      primary_network_interface_id:              <computed>
+      private_dns:                               <computed>
+      private_ip:                                <computed>
+      public_dns:                                <computed>
+      public_ip:                                 <computed>
+      root_block_device.#:                       "1"
+      root_block_device.0.delete_on_termination: "true"
+      root_block_device.0.encrypted:             <computed>
+      root_block_device.0.iops:                  "1000"
+      root_block_device.0.kms_key_id:            <computed>
+      root_block_device.0.volume_id:             <computed>
+      root_block_device.0.volume_size:           "80"
+      root_block_device.0.volume_type:           "io1"
+      security_groups.#:                         <computed>
+      source_dest_check:                         "false"
+      subnet_id:                                 "${element(local.control_plane_subnet_ids, count.index % length(local.control_plane_subnet_ids))}"
+      tags.%:                                    <computed>
+      tenancy:                                   <computed>
+      volume_tags.%:                             <computed>
+      vpc_security_group_ids.#:                  <computed>
+[0m
+[0m[32m  [32m+[0m [32maws_instance.control_plane[1]
+[0m      id:                                        <computed>
+      ami:                                       "ami-02eac2c0129f6376b"
+      arn:                                       <computed>
+      associate_public_ip_address:               "true"
+      availability_zone:                         "us-east-1b"
+      cpu_core_count:                            <computed>
+      cpu_threads_per_core:                      <computed>
+      ebs_block_device.#:                        <computed>
+      ephemeral_block_device.#:                  <computed>
+      get_password_data:                         "false"
+      host_id:                                   <computed>
+      iam_instance_profile:                      "${local.control_plane_instance_profile}"
+      instance_state:                            <computed>
+      instance_type:                             "m5.xlarge"
+      ipv6_address_count:                        <computed>
+      ipv6_addresses.#:                          <computed>
+      key_name:                                  "${local.cluster_name}"
+      network_interface.#:                       <computed>
+      network_interface_id:                      <computed>
+      password_data:                             <computed>
+      placement_group:                           <computed>
+      primary_network_interface_id:              <computed>
+      private_dns:                               <computed>
+      private_ip:                                <computed>
+      public_dns:                                <computed>
+      public_ip:                                 <computed>
+      root_block_device.#:                       "1"
+      root_block_device.0.delete_on_termination: "true"
+      root_block_device.0.encrypted:             <computed>
+      root_block_device.0.iops:                  "1000"
+      root_block_device.0.kms_key_id:            <computed>
+      root_block_device.0.volume_id:             <computed>
+      root_block_device.0.volume_size:           "80"
+      root_block_device.0.volume_type:           "io1"
+      security_groups.#:                         <computed>
+      source_dest_check:                         "false"
+      subnet_id:                                 "${element(local.control_plane_subnet_ids, count.index % length(local.control_plane_subnet_ids))}"
+      tags.%:                                    <computed>
+      tenancy:                                   <computed>
+      volume_tags.%:                             <computed>
+      vpc_security_group_ids.#:                  <computed>
+[0m
+[0m[32m  [32m+[0m [32maws_instance.control_plane[2]
+[0m      id:                                        <computed>
+      ami:                                       "ami-02eac2c0129f6376b"
+      arn:                                       <computed>
+      associate_public_ip_address:               "true"
+      availability_zone:                         "us-east-1c"
+      cpu_core_count:                            <computed>
+      cpu_threads_per_core:                      <computed>
+      ebs_block_device.#:                        <computed>
+      ephemeral_block_device.#:                  <computed>
+      get_password_data:                         "false"
+      host_id:                                   <computed>
+      iam_instance_profile:                      "${local.control_plane_instance_profile}"
+      instance_state:                            <computed>
+      instance_type:                             "m5.xlarge"
+      ipv6_address_count:                        <computed>
+      ipv6_addresses.#:                          <computed>
+      key_name:                                  "${local.cluster_name}"
+      network_interface.#:                       <computed>
+      network_interface_id:                      <computed>
+      password_data:                             <computed>
+      placement_group:                           <computed>
+      primary_network_interface_id:              <computed>
+      private_dns:                               <computed>
+      private_ip:                                <computed>
+      public_dns:                                <computed>
+      public_ip:                                 <computed>
+      root_block_device.#:                       "1"
+      root_block_device.0.delete_on_termination: "true"
+      root_block_device.0.encrypted:             <computed>
+      root_block_device.0.iops:                  "1000"
+      root_block_device.0.kms_key_id:            <computed>
+      root_block_device.0.volume_id:             <computed>
+      root_block_device.0.volume_size:           "80"
+      root_block_device.0.volume_type:           "io1"
+      security_groups.#:                         <computed>
+      source_dest_check:                         "false"
+      subnet_id:                                 "${element(local.control_plane_subnet_ids, count.index % length(local.control_plane_subnet_ids))}"
+      tags.%:                                    <computed>
+      tenancy:                                   <computed>
+      volume_tags.%:                             <computed>
+      vpc_security_group_ids.#:                  <computed>
+[0m
+[0m[32m  [32m+[0m [32maws_instance.worker_pool0[0]
+[0m      id:                                        <computed>
+      ami:                                       "ami-02eac2c0129f6376b"
+      arn:                                       <computed>
+      associate_public_ip_address:               "true"
+      availability_zone:                         "us-east-1a"
+      cpu_core_count:                            <computed>
+      cpu_threads_per_core:                      <computed>
+      ebs_block_device.#:                        <computed>
+      ephemeral_block_device.#:                  <computed>
+      get_password_data:                         "false"
+      host_id:                                   <computed>
+      iam_instance_profile:                      "${local.worker0_instance_profile}"
+      instance_state:                            <computed>
+      instance_type:                             "m5.2xlarge"
+      ipv6_address_count:                        <computed>
+      ipv6_addresses.#:                          <computed>
+      key_name:                                  "${local.cluster_name}"
+      network_interface.#:                       <computed>
+      network_interface_id:                      <computed>
+      password_data:                             <computed>
+      placement_group:                           <computed>
+      primary_network_interface_id:              <computed>
+      private_dns:                               <computed>
+      private_ip:                                <computed>
+      public_dns:                                <computed>
+      public_ip:                                 <computed>
+      root_block_device.#:                       "1"
+      root_block_device.0.delete_on_termination: "true"
+      root_block_device.0.encrypted:             <computed>
+      root_block_device.0.kms_key_id:            <computed>
+      root_block_device.0.volume_id:             <computed>
+      root_block_device.0.volume_size:           "80"
+      root_block_device.0.volume_type:           "gp2"
+      security_groups.#:                         <computed>
+      source_dest_check:                         "false"
+      subnet_id:                                 "${element(local.worker0_subnet_ids, count.index % length(local.worker0_subnet_ids))}"
+      tags.%:                                    <computed>
+      tenancy:                                   <computed>
+      volume_tags.%:                             <computed>
+      vpc_security_group_ids.#:                  <computed>
+[0m
+[0m[32m  [32m+[0m [32maws_instance.worker_pool0[1]
+[0m      id:                                        <computed>
+      ami:                                       "ami-02eac2c0129f6376b"
+      arn:                                       <computed>
+      associate_public_ip_address:               "true"
+      availability_zone:                         "us-east-1b"
+      cpu_core_count:                            <computed>
+      cpu_threads_per_core:                      <computed>
+      ebs_block_device.#:                        <computed>
+      ephemeral_block_device.#:                  <computed>
+      get_password_data:                         "false"
+      host_id:                                   <computed>
+      iam_instance_profile:                      "${local.worker0_instance_profile}"
+      instance_state:                            <computed>
+      instance_type:                             "m5.2xlarge"
+      ipv6_address_count:                        <computed>
+      ipv6_addresses.#:                          <computed>
+      key_name:                                  "${local.cluster_name}"
+      network_interface.#:                       <computed>
+      network_interface_id:                      <computed>
+      password_data:                             <computed>
+      placement_group:                           <computed>
+      primary_network_interface_id:              <computed>
+      private_dns:                               <computed>
+      private_ip:                                <computed>
+      public_dns:                                <computed>
+      public_ip:                                 <computed>
+      root_block_device.#:                       "1"
+      root_block_device.0.delete_on_termination: "true"
+      root_block_device.0.encrypted:             <computed>
+      root_block_device.0.kms_key_id:            <computed>
+      root_block_device.0.volume_id:             <computed>
+      root_block_device.0.volume_size:           "80"
+      root_block_device.0.volume_type:           "gp2"
+      security_groups.#:                         <computed>
+      source_dest_check:                         "false"
+      subnet_id:                                 "${element(local.worker0_subnet_ids, count.index % length(local.worker0_subnet_ids))}"
+      tags.%:                                    <computed>
+      tenancy:                                   <computed>
+      volume_tags.%:                             <computed>
+      vpc_security_group_ids.#:                  <computed>
+[0m
+[0m[32m  [32m+[0m [32maws_instance.worker_pool0[2]
+[0m      id:                                        <computed>
+      ami:                                       "ami-02eac2c0129f6376b"
+      arn:                                       <computed>
+      associate_public_ip_address:               "true"
+      availability_zone:                         "us-east-1c"
+      cpu_core_count:                            <computed>
+      cpu_threads_per_core:                      <computed>
+      ebs_block_device.#:                        <computed>
+      ephemeral_block_device.#:                  <computed>
+      get_password_data:                         "false"
+      host_id:                                   <computed>
+      iam_instance_profile:                      "${local.worker0_instance_profile}"
+      instance_state:                            <computed>
+      instance_type:                             "m5.2xlarge"
+      ipv6_address_count:                        <computed>
+      ipv6_addresses.#:                          <computed>
+      key_name:                                  "${local.cluster_name}"
+      network_interface.#:                       <computed>
+      network_interface_id:                      <computed>
+      password_data:                             <computed>
+      placement_group:                           <computed>
+      primary_network_interface_id:              <computed>
+      private_dns:                               <computed>
+      private_ip:                                <computed>
+      public_dns:                                <computed>
+      public_ip:                                 <computed>
+      root_block_device.#:                       "1"
+      root_block_device.0.delete_on_termination: "true"
+      root_block_device.0.encrypted:             <computed>
+      root_block_device.0.kms_key_id:            <computed>
+      root_block_device.0.volume_id:             <computed>
+      root_block_device.0.volume_size:           "80"
+      root_block_device.0.volume_type:           "gp2"
+      security_groups.#:                         <computed>
+      source_dest_check:                         "false"
+      subnet_id:                                 "${element(local.worker0_subnet_ids, count.index % length(local.worker0_subnet_ids))}"
+      tags.%:                                    <computed>
+      tenancy:                                   <computed>
+      volume_tags.%:                             <computed>
+      vpc_security_group_ids.#:                  <computed>
+[0m
+[0m[32m  [32m+[0m [32maws_instance.worker_pool0[3]
+[0m      id:                                        <computed>
+      ami:                                       "ami-02eac2c0129f6376b"
+      arn:                                       <computed>
+      associate_public_ip_address:               "true"
+      availability_zone:                         "us-east-1d"
+      cpu_core_count:                            <computed>
+      cpu_threads_per_core:                      <computed>
+      ebs_block_device.#:                        <computed>
+      ephemeral_block_device.#:                  <computed>
+      get_password_data:                         "false"
+      host_id:                                   <computed>
+      iam_instance_profile:                      "${local.worker0_instance_profile}"
+      instance_state:                            <computed>
+      instance_type:                             "m5.2xlarge"
+      ipv6_address_count:                        <computed>
+      ipv6_addresses.#:                          <computed>
+      key_name:                                  "${local.cluster_name}"
+      network_interface.#:                       <computed>
+      network_interface_id:                      <computed>
+      password_data:                             <computed>
+      placement_group:                           <computed>
+      primary_network_interface_id:              <computed>
+      private_dns:                               <computed>
+      private_ip:                                <computed>
+      public_dns:                                <computed>
+      public_ip:                                 <computed>
+      root_block_device.#:                       "1"
+      root_block_device.0.delete_on_termination: "true"
+      root_block_device.0.encrypted:             <computed>
+      root_block_device.0.kms_key_id:            <computed>
+      root_block_device.0.volume_id:             <computed>
+      root_block_device.0.volume_size:           "80"
+      root_block_device.0.volume_type:           "gp2"
+      security_groups.#:                         <computed>
+      source_dest_check:                         "false"
+      subnet_id:                                 "${element(local.worker0_subnet_ids, count.index % length(local.worker0_subnet_ids))}"
+      tags.%:                                    <computed>
+      tenancy:                                   <computed>
+      volume_tags.%:                             <computed>
+      vpc_security_group_ids.#:                  <computed>
+[0m
+[0m[32m  [32m+[0m [32maws_internet_gateway.konvoy_gateway
+[0m      id:                                        <computed>
+      owner_id:                                  <computed>
+      tags.%:                                    <computed>
+      vpc_id:                                    "${local.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_key_pair.konvoy
+[0m      id:                                        <computed>
+      fingerprint:                               <computed>
+      key_name:                                  "${local.cluster_name}"
+      key_pair_id:                               <computed>
+      public_key:                                "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC0bxjirnm9VFhL3bQEeheYBJhP+srGO6UbEFclN+6t/rVMVur27lCSqOjyu3WL7Jf+SmN61alr4tHtOXZIvkpTKY3n3KZscqyGHDTWvjoYIVsvhyszccqULJrWZSO6MlM9K0kFpBPAIV2gLMwn2bheLclnM8xwfASyxQTMNwJckFSkEdA/iI60+OANs/TJ1iSYXuaav9eFbUz/qYfuW7v1w5s2PF4loZVluDHxiNt34UFoYlmL9HO7uY0Gq/9Mu8veuXeS2dBTViuBhdW9V9wsv7yEF5O7sNsGMflFUVodGWt2yXX3x9BKtMlPZjwd9WEBqNOfiJ2eBS6Evg1KwemTu4lHACBPP7K4o4PiS5n/AuV0zMDNnCD/aIbfAQYJSeePqPuVLkuPc/piPG0yq7uK+NPzvIJB4RZ44LKN6sne+mpBhcF39ckw1dj22fo+W48esFIoKc6fdD6wQOYeqchlLLHHVfZH1GXZoIC2Am+Lj1qZQWUTL6xOXf+ocxioz6v0yeMziVssy0CfTMO4Bjn9EHjGfMWGq0M3gIunSqIjZZgUuXeGF+loWRdrFFJw25Z8/0asRDqib59MD1XfcX2ReMH1rO+4zk2zFyTypzNehfqZHay49O+E97Irq3vBW8KBy1a1r10Q/C7n5MCGENtj077jFkW9hm7IJ2mtYQtI6w=="
+[0m
+[0m[32m  [32m+[0m [32maws_route.konvoy_gateway_route
+[0m      id:                                        <computed>
+      destination_cidr_block:                    "0.0.0.0/0"
+      destination_prefix_list_id:                <computed>
+      egress_only_gateway_id:                    <computed>
+      gateway_id:                                "${var.vpc_internet_gateway_id == \"\" ? join(\",\", aws_internet_gateway.konvoy_gateway.*.id) : var.vpc_internet_gateway_id}"
+      instance_id:                               <computed>
+      instance_owner_id:                         <computed>
+      nat_gateway_id:                            <computed>
+      network_interface_id:                      <computed>
+      origin:                                    <computed>
+      route_table_id:                            "${var.vpc_route_table_id == \"\" ? join(\",\", aws_vpc.konvoy.*.default_route_table_id) : var.vpc_route_table_id}"
+      state:                                     <computed>
+[0m
+[0m[32m  [32m+[0m [32maws_security_group.konvoy_egress
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      description:                               "Allow all egress communication."
+      egress.#:                                  "1"
+      egress.482069346.cidr_blocks.#:            "1"
+      egress.482069346.cidr_blocks.0:            "0.0.0.0/0"
+      egress.482069346.description:              ""
+      egress.482069346.from_port:                "0"
+      egress.482069346.ipv6_cidr_blocks.#:       "0"
+      egress.482069346.prefix_list_ids.#:        "0"
+      egress.482069346.protocol:                 "-1"
+      egress.482069346.security_groups.#:        "0"
+      egress.482069346.self:                     "false"
+      egress.482069346.to_port:                  "0"
+      ingress.#:                                 <computed>
+      name:                                      "${local.sg_egress_name}"
+      owner_id:                                  <computed>
+      revoke_rules_on_delete:                    "false"
+      tags.%:                                    <computed>
+      vpc_id:                                    "${local.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_security_group.konvoy_lb_control_plane
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      description:                               "Allow inbound on 6443 for kube-apiserver load balancer."
+      egress.#:                                  <computed>
+      ingress.#:                                 "1"
+      ingress.1463360607.cidr_blocks.#:          "1"
+      ingress.1463360607.cidr_blocks.0:          "0.0.0.0/0"
+      ingress.1463360607.description:            ""
+      ingress.1463360607.from_port:              "6443"
+      ingress.1463360607.ipv6_cidr_blocks.#:     "0"
+      ingress.1463360607.prefix_list_ids.#:      "0"
+      ingress.1463360607.protocol:               "tcp"
+      ingress.1463360607.security_groups.#:      "0"
+      ingress.1463360607.self:                   "false"
+      ingress.1463360607.to_port:                "6443"
+      name:                                      "${local.sg_control_plane_name}"
+      owner_id:                                  <computed>
+      revoke_rules_on_delete:                    "false"
+      tags.%:                                    <computed>
+      vpc_id:                                    "${local.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_security_group.konvoy_private
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      description:                               "Allow all communication between nodes."
+      egress.#:                                  "1"
+      egress.753360330.cidr_blocks.#:            "0"
+      egress.753360330.description:              ""
+      egress.753360330.from_port:                "0"
+      egress.753360330.ipv6_cidr_blocks.#:       "0"
+      egress.753360330.prefix_list_ids.#:        "0"
+      egress.753360330.protocol:                 "-1"
+      egress.753360330.security_groups.#:        "0"
+      egress.753360330.self:                     "true"
+      egress.753360330.to_port:                  "0"
+      ingress.#:                                 "1"
+      ingress.753360330.cidr_blocks.#:           "0"
+      ingress.753360330.description:             ""
+      ingress.753360330.from_port:               "0"
+      ingress.753360330.ipv6_cidr_blocks.#:      "0"
+      ingress.753360330.prefix_list_ids.#:       "0"
+      ingress.753360330.protocol:                "-1"
+      ingress.753360330.security_groups.#:       "0"
+      ingress.753360330.self:                    "true"
+      ingress.753360330.to_port:                 "0"
+      name:                                      "${local.sg_private_name}"
+      owner_id:                                  <computed>
+      revoke_rules_on_delete:                    "false"
+      tags.%:                                    <computed>
+      vpc_id:                                    "${local.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_security_group.konvoy_ssh
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      description:                               "Allow inbound SSH for Konvoy."
+      egress.#:                                  <computed>
+      ingress.#:                                 "1"
+      ingress.2541437006.cidr_blocks.#:          "1"
+      ingress.2541437006.cidr_blocks.0:          "0.0.0.0/0"
+      ingress.2541437006.description:            ""
+      ingress.2541437006.from_port:              "22"
+      ingress.2541437006.ipv6_cidr_blocks.#:     "0"
+      ingress.2541437006.prefix_list_ids.#:      "0"
+      ingress.2541437006.protocol:               "tcp"
+      ingress.2541437006.security_groups.#:      "0"
+      ingress.2541437006.self:                   "false"
+      ingress.2541437006.to_port:                "22"
+      name:                                      "${local.sg_ssh_name}"
+      owner_id:                                  <computed>
+      revoke_rules_on_delete:                    "false"
+      tags.%:                                    <computed>
+      vpc_id:                                    "${local.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_subnet.konvoy_control_plane[0]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      assign_ipv6_address_on_creation:           "false"
+      availability_zone:                         "us-east-1a"
+      availability_zone_id:                      <computed>
+      cidr_block:                                "10.0.192.0/22"
+      ipv6_cidr_block:                           <computed>
+      ipv6_cidr_block_association_id:            <computed>
+      map_public_ip_on_launch:                   "false"
+      owner_id:                                  <computed>
+      tags.%:                                    <computed>
+      vpc_id:                                    "${var.vpc_id == \"\" ? join(\",\", aws_vpc.konvoy.*.id) : var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_subnet.konvoy_control_plane[1]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      assign_ipv6_address_on_creation:           "false"
+      availability_zone:                         "us-east-1b"
+      availability_zone_id:                      <computed>
+      cidr_block:                                "10.0.196.0/22"
+      ipv6_cidr_block:                           <computed>
+      ipv6_cidr_block_association_id:            <computed>
+      map_public_ip_on_launch:                   "false"
+      owner_id:                                  <computed>
+      tags.%:                                    <computed>
+      vpc_id:                                    "${var.vpc_id == \"\" ? join(\",\", aws_vpc.konvoy.*.id) : var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_subnet.konvoy_control_plane[2]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      assign_ipv6_address_on_creation:           "false"
+      availability_zone:                         "us-east-1c"
+      availability_zone_id:                      <computed>
+      cidr_block:                                "10.0.200.0/22"
+      ipv6_cidr_block:                           <computed>
+      ipv6_cidr_block_association_id:            <computed>
+      map_public_ip_on_launch:                   "false"
+      owner_id:                                  <computed>
+      tags.%:                                    <computed>
+      vpc_id:                                    "${var.vpc_id == \"\" ? join(\",\", aws_vpc.konvoy.*.id) : var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_subnet.konvoy_control_plane[3]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      assign_ipv6_address_on_creation:           "false"
+      availability_zone:                         "us-east-1d"
+      availability_zone_id:                      <computed>
+      cidr_block:                                "10.0.204.0/22"
+      ipv6_cidr_block:                           <computed>
+      ipv6_cidr_block_association_id:            <computed>
+      map_public_ip_on_launch:                   "false"
+      owner_id:                                  <computed>
+      tags.%:                                    <computed>
+      vpc_id:                                    "${var.vpc_id == \"\" ? join(\",\", aws_vpc.konvoy.*.id) : var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_subnet.konvoy_control_plane[4]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      assign_ipv6_address_on_creation:           "false"
+      availability_zone:                         "us-east-1f"
+      availability_zone_id:                      <computed>
+      cidr_block:                                "10.0.208.0/22"
+      ipv6_cidr_block:                           <computed>
+      ipv6_cidr_block_association_id:            <computed>
+      map_public_ip_on_launch:                   "false"
+      owner_id:                                  <computed>
+      tags.%:                                    <computed>
+      vpc_id:                                    "${var.vpc_id == \"\" ? join(\",\", aws_vpc.konvoy.*.id) : var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_subnet.konvoy_private[0]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      assign_ipv6_address_on_creation:           "false"
+      availability_zone:                         "us-east-1a"
+      availability_zone_id:                      <computed>
+      cidr_block:                                "10.0.128.0/22"
+      ipv6_cidr_block:                           <computed>
+      ipv6_cidr_block_association_id:            <computed>
+      map_public_ip_on_launch:                   "false"
+      owner_id:                                  <computed>
+      tags.%:                                    <computed>
+      vpc_id:                                    "${var.vpc_id == \"\" ? join(\",\", aws_vpc.konvoy.*.id) : var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_subnet.konvoy_private[1]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      assign_ipv6_address_on_creation:           "false"
+      availability_zone:                         "us-east-1b"
+      availability_zone_id:                      <computed>
+      cidr_block:                                "10.0.132.0/22"
+      ipv6_cidr_block:                           <computed>
+      ipv6_cidr_block_association_id:            <computed>
+      map_public_ip_on_launch:                   "false"
+      owner_id:                                  <computed>
+      tags.%:                                    <computed>
+      vpc_id:                                    "${var.vpc_id == \"\" ? join(\",\", aws_vpc.konvoy.*.id) : var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_subnet.konvoy_private[2]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      assign_ipv6_address_on_creation:           "false"
+      availability_zone:                         "us-east-1c"
+      availability_zone_id:                      <computed>
+      cidr_block:                                "10.0.136.0/22"
+      ipv6_cidr_block:                           <computed>
+      ipv6_cidr_block_association_id:            <computed>
+      map_public_ip_on_launch:                   "false"
+      owner_id:                                  <computed>
+      tags.%:                                    <computed>
+      vpc_id:                                    "${var.vpc_id == \"\" ? join(\",\", aws_vpc.konvoy.*.id) : var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_subnet.konvoy_private[3]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      assign_ipv6_address_on_creation:           "false"
+      availability_zone:                         "us-east-1d"
+      availability_zone_id:                      <computed>
+      cidr_block:                                "10.0.140.0/22"
+      ipv6_cidr_block:                           <computed>
+      ipv6_cidr_block_association_id:            <computed>
+      map_public_ip_on_launch:                   "false"
+      owner_id:                                  <computed>
+      tags.%:                                    <computed>
+      vpc_id:                                    "${var.vpc_id == \"\" ? join(\",\", aws_vpc.konvoy.*.id) : var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_subnet.konvoy_private[4]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      assign_ipv6_address_on_creation:           "false"
+      availability_zone:                         "us-east-1f"
+      availability_zone_id:                      <computed>
+      cidr_block:                                "10.0.144.0/22"
+      ipv6_cidr_block:                           <computed>
+      ipv6_cidr_block_association_id:            <computed>
+      map_public_ip_on_launch:                   "false"
+      owner_id:                                  <computed>
+      tags.%:                                    <computed>
+      vpc_id:                                    "${var.vpc_id == \"\" ? join(\",\", aws_vpc.konvoy.*.id) : var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_subnet.konvoy_public[0]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      assign_ipv6_address_on_creation:           "false"
+      availability_zone:                         "us-east-1a"
+      availability_zone_id:                      <computed>
+      cidr_block:                                "10.0.64.0/22"
+      ipv6_cidr_block:                           <computed>
+      ipv6_cidr_block_association_id:            <computed>
+      map_public_ip_on_launch:                   "true"
+      owner_id:                                  <computed>
+      tags.%:                                    <computed>
+      vpc_id:                                    "${var.vpc_id == \"\" ? join(\",\", aws_vpc.konvoy.*.id) : var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_subnet.konvoy_public[1]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      assign_ipv6_address_on_creation:           "false"
+      availability_zone:                         "us-east-1b"
+      availability_zone_id:                      <computed>
+      cidr_block:                                "10.0.68.0/22"
+      ipv6_cidr_block:                           <computed>
+      ipv6_cidr_block_association_id:            <computed>
+      map_public_ip_on_launch:                   "true"
+      owner_id:                                  <computed>
+      tags.%:                                    <computed>
+      vpc_id:                                    "${var.vpc_id == \"\" ? join(\",\", aws_vpc.konvoy.*.id) : var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_subnet.konvoy_public[2]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      assign_ipv6_address_on_creation:           "false"
+      availability_zone:                         "us-east-1c"
+      availability_zone_id:                      <computed>
+      cidr_block:                                "10.0.72.0/22"
+      ipv6_cidr_block:                           <computed>
+      ipv6_cidr_block_association_id:            <computed>
+      map_public_ip_on_launch:                   "true"
+      owner_id:                                  <computed>
+      tags.%:                                    <computed>
+      vpc_id:                                    "${var.vpc_id == \"\" ? join(\",\", aws_vpc.konvoy.*.id) : var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_subnet.konvoy_public[3]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      assign_ipv6_address_on_creation:           "false"
+      availability_zone:                         "us-east-1d"
+      availability_zone_id:                      <computed>
+      cidr_block:                                "10.0.76.0/22"
+      ipv6_cidr_block:                           <computed>
+      ipv6_cidr_block_association_id:            <computed>
+      map_public_ip_on_launch:                   "true"
+      owner_id:                                  <computed>
+      tags.%:                                    <computed>
+      vpc_id:                                    "${var.vpc_id == \"\" ? join(\",\", aws_vpc.konvoy.*.id) : var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_subnet.konvoy_public[4]
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      assign_ipv6_address_on_creation:           "false"
+      availability_zone:                         "us-east-1f"
+      availability_zone_id:                      <computed>
+      cidr_block:                                "10.0.80.0/22"
+      ipv6_cidr_block:                           <computed>
+      ipv6_cidr_block_association_id:            <computed>
+      map_public_ip_on_launch:                   "true"
+      owner_id:                                  <computed>
+      tags.%:                                    <computed>
+      vpc_id:                                    "${var.vpc_id == \"\" ? join(\",\", aws_vpc.konvoy.*.id) : var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_volume_attachment.control_plane_imagefs[0]
+[0m      id:                                        <computed>
+      device_name:                               "/dev/xvdb"
+      force_detach:                              "true"
+      instance_id:                               "${element(aws_instance.control_plane.*.id, count.index)}"
+      volume_id:                                 "${element(aws_ebs_volume.control_plane_imagefs.*.id, count.index)}"
+[0m
+[0m[32m  [32m+[0m [32maws_volume_attachment.control_plane_imagefs[1]
+[0m      id:                                        <computed>
+      device_name:                               "/dev/xvdb"
+      force_detach:                              "true"
+      instance_id:                               "${element(aws_instance.control_plane.*.id, count.index)}"
+      volume_id:                                 "${element(aws_ebs_volume.control_plane_imagefs.*.id, count.index)}"
+[0m
+[0m[32m  [32m+[0m [32maws_volume_attachment.control_plane_imagefs[2]
+[0m      id:                                        <computed>
+      device_name:                               "/dev/xvdb"
+      force_detach:                              "true"
+      instance_id:                               "${element(aws_instance.control_plane.*.id, count.index)}"
+      volume_id:                                 "${element(aws_ebs_volume.control_plane_imagefs.*.id, count.index)}"
+[0m
+[0m[32m  [32m+[0m [32maws_volume_attachment.worker_pool0_imagefs[0]
+[0m      id:                                        <computed>
+      device_name:                               "/dev/xvdb"
+      force_detach:                              "true"
+      instance_id:                               "${element(aws_instance.worker_pool0.*.id, count.index)}"
+      volume_id:                                 "${element(aws_ebs_volume.worker_pool0_imagefs.*.id, count.index)}"
+[0m
+[0m[32m  [32m+[0m [32maws_volume_attachment.worker_pool0_imagefs[1]
+[0m      id:                                        <computed>
+      device_name:                               "/dev/xvdb"
+      force_detach:                              "true"
+      instance_id:                               "${element(aws_instance.worker_pool0.*.id, count.index)}"
+      volume_id:                                 "${element(aws_ebs_volume.worker_pool0_imagefs.*.id, count.index)}"
+[0m
+[0m[32m  [32m+[0m [32maws_volume_attachment.worker_pool0_imagefs[2]
+[0m      id:                                        <computed>
+      device_name:                               "/dev/xvdb"
+      force_detach:                              "true"
+      instance_id:                               "${element(aws_instance.worker_pool0.*.id, count.index)}"
+      volume_id:                                 "${element(aws_ebs_volume.worker_pool0_imagefs.*.id, count.index)}"
+[0m
+[0m[32m  [32m+[0m [32maws_volume_attachment.worker_pool0_imagefs[3]
+[0m      id:                                        <computed>
+      device_name:                               "/dev/xvdb"
+      force_detach:                              "true"
+      instance_id:                               "${element(aws_instance.worker_pool0.*.id, count.index)}"
+      volume_id:                                 "${element(aws_ebs_volume.worker_pool0_imagefs.*.id, count.index)}"
+[0m
+[0m[32m  [32m+[0m [32maws_vpc.konvoy
+[0m      id:                                        <computed>
+      arn:                                       <computed>
+      assign_generated_ipv6_cidr_block:          "false"
+      cidr_block:                                "10.0.0.0/16"
+      default_network_acl_id:                    <computed>
+      default_route_table_id:                    <computed>
+      default_security_group_id:                 <computed>
+      dhcp_options_id:                           <computed>
+      enable_classiclink:                        <computed>
+      enable_classiclink_dns_support:            <computed>
+      enable_dns_hostnames:                      "true"
+      enable_dns_support:                        "true"
+      instance_tenancy:                          "default"
+      ipv6_association_id:                       <computed>
+      ipv6_cidr_block:                           <computed>
+      main_route_table_id:                       <computed>
+      owner_id:                                  <computed>
+      tags.%:                                    <computed>
+[0m
+[0m[32m  [32m+[0m [32maws_vpc_endpoint.ec2
+[0m      id:                                        <computed>
+      cidr_blocks.#:                             <computed>
+      dns_entry.#:                               <computed>
+      network_interface_ids.#:                   <computed>
+      owner_id:                                  <computed>
+      policy:                                    <computed>
+      prefix_list_id:                            <computed>
+      private_dns_enabled:                       "true"
+      requester_managed:                         <computed>
+      route_table_ids.#:                         <computed>
+      security_group_ids.#:                      <computed>
+      service_name:                              "com.amazonaws.us-east-1.ec2"
+      state:                                     <computed>
+      subnet_ids.#:                              <computed>
+      tags.%:                                    <computed>
+      vpc_endpoint_type:                         "Interface"
+      vpc_id:                                    "${local.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32maws_vpc_endpoint.elasticloadbalancing
+[0m      id:                                        <computed>
+      cidr_blocks.#:                             <computed>
+      dns_entry.#:                               <computed>
+      network_interface_ids.#:                   <computed>
+      owner_id:                                  <computed>
+      policy:                                    <computed>
+      prefix_list_id:                            <computed>
+      private_dns_enabled:                       "true"
+      requester_managed:                         <computed>
+      route_table_ids.#:                         <computed>
+      security_group_ids.#:                      <computed>
+      service_name:                              "com.amazonaws.us-east-1.elasticloadbalancing"
+      state:                                     <computed>
+      subnet_ids.#:                              <computed>
+      tags.%:                                    <computed>
+      vpc_endpoint_type:                         "Interface"
+      vpc_id:                                    "${local.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32mlocal_file.ansible_inventory
+[0m      id:                                        <computed>
+      content:                                   "all:\n  vars:\n    version: \"${var.inventory_version}\"\n    order: sorted\n    control_plane_endpoint: \"${aws_elb.konvoy_control_plane.*.dns_name[0]}:6443\"\n    ansible_user: \"${var.ssh_user}\"\n    ansible_port: 22\n${chomp(join(\"\\n\", compact(list(\nvar.ssh_private_key_file == \"\" ? \"\" : \"    ansible_ssh_private_key_file: \\\"${var.ssh_private_key_file}\\\"\",\n))))}\n\ncontrol-plane:\n  hosts:\n${join(\"\\n\", formatlist((var.bastion_pool_count > 0) || (var.create_vpc_internet_gateway == \"0\") ? local.inventory_control_plane_format : local.inventory_control_plane_format_with_ansible_host, aws_instance.control_plane.*.private_ip, aws_instance.control_plane.*.public_dns, \"control-plane\"))}\n\nnode:\n${chomp(join(\"\\n\", list(\n(var.worker_pool0_count > 0) || (var.worker_pool1_count > 0) || (var.worker_pool2_count > 0) || (var.worker_pool3_count > 0) || (var.worker_pool4_count > 0) || (var.worker_pool5_count > 0) || (var.worker_pool6_count > 0) || (var.worker_pool7_count > 0) || (var.worker_pool8_count > 0) || (var.worker_pool9_count > 0) || (false) ? \"  hosts:\" : \"\",\njoin(\"\\n\", formatlist((var.bastion_pool_count > 0) || (var.create_vpc_internet_gateway == \"0\") ? local.inventory_format : local.inventory_format_with_ansible_host, aws_instance.worker_pool0.*.private_ip, aws_instance.worker_pool0.*.public_dns, var.worker_pool0_name)),\njoin(\"\\n\", formatlist((var.bastion_pool_count > 0) || (var.create_vpc_internet_gateway == \"0\") ? local.inventory_format : local.inventory_format_with_ansible_host, aws_instance.worker_pool1.*.private_ip, aws_instance.worker_pool1.*.public_dns, var.worker_pool1_name)),\njoin(\"\\n\", formatlist((var.bastion_pool_count > 0) || (var.create_vpc_internet_gateway == \"0\") ? local.inventory_format : local.inventory_format_with_ansible_host, aws_instance.worker_pool2.*.private_ip, aws_instance.worker_pool2.*.public_dns, var.worker_pool2_name)),\njoin(\"\\n\", formatlist((var.bastion_pool_count > 0) || (var.create_vpc_internet_gateway == \"0\") ? local.inventory_format : local.inventory_format_with_ansible_host, aws_instance.worker_pool3.*.private_ip, aws_instance.worker_pool3.*.public_dns, var.worker_pool3_name)),\njoin(\"\\n\", formatlist((var.bastion_pool_count > 0) || (var.create_vpc_internet_gateway == \"0\") ? local.inventory_format : local.inventory_format_with_ansible_host, aws_instance.worker_pool4.*.private_ip, aws_instance.worker_pool4.*.public_dns, var.worker_pool4_name)),\njoin(\"\\n\", formatlist((var.bastion_pool_count > 0) || (var.create_vpc_internet_gateway == \"0\") ? local.inventory_format : local.inventory_format_with_ansible_host, aws_instance.worker_pool5.*.private_ip, aws_instance.worker_pool5.*.public_dns, var.worker_pool5_name)),\njoin(\"\\n\", formatlist((var.bastion_pool_count > 0) || (var.create_vpc_internet_gateway == \"0\") ? local.inventory_format : local.inventory_format_with_ansible_host, aws_instance.worker_pool6.*.private_ip, aws_instance.worker_pool6.*.public_dns, var.worker_pool6_name)),\njoin(\"\\n\", formatlist((var.bastion_pool_count > 0) || (var.create_vpc_internet_gateway == \"0\") ? local.inventory_format : local.inventory_format_with_ansible_host, aws_instance.worker_pool7.*.private_ip, aws_instance.worker_pool7.*.public_dns, var.worker_pool7_name)),\njoin(\"\\n\", formatlist((var.bastion_pool_count > 0) || (var.create_vpc_internet_gateway == \"0\") ? local.inventory_format : local.inventory_format_with_ansible_host, aws_instance.worker_pool8.*.private_ip, aws_instance.worker_pool8.*.public_dns, var.worker_pool8_name)),\njoin(\"\\n\", formatlist((var.bastion_pool_count > 0) || (var.create_vpc_internet_gateway == \"0\") ? local.inventory_format : local.inventory_format_with_ansible_host, aws_instance.worker_pool9.*.private_ip, aws_instance.worker_pool9.*.public_dns, var.worker_pool9_name)),\n)))}\n\nbastion:\n${var.bastion_pool_count == 0 ? \"\" : join(\"\\n\", concat(list(\"  hosts:\"), formatlist(local.bastion_hosts_format, aws_instance.bastion.*.private_ip, aws_instance.bastion.*.public_dns)))}\n${var.bastion_pool_count == 0 ? \"\" : join(\"\\n\", concat(list(\"  vars:\"), formatlist(local.bastion_vars_format, compact(list(\"ansible_user: \\\"${var.ssh_user}\\\"\", \"ansible_port: 22\"))))) }\n"
+      directory_permission:                      "0777"
+      file_permission:                           "0777"
+      filename:                                  "/tmp/konvoy/lab/inventory.yaml"
+[0m
+[0m[32m  [32m+[0m [32mrandom_id.id
+[0m      id:                                        <computed>
+      b64:                                       <computed>
+      b64_std:                                   <computed>
+      b64_url:                                   <computed>
+      byte_length:                               "2"
+      dec:                                       <computed>
+      hex:                                       <computed>
+[0m
+[0m
+[0m[1mPlan:[0m 53 to add, 0 to change, 0 to destroy.[0m
+[0m[1mrandom_id.id: Creating...[0m
+  b64:         "" => "<computed>"
+  b64_std:     "" => "<computed>"
+  b64_url:     "" => "<computed>"
+  byte_length: "" => "2"
+  dec:         "" => "<computed>"
+  hex:         "" => "<computed>"[0m
+[0m[1mrandom_id.id: Creation complete after 0s (ID: -nU)[0m[0m
+[0m[1maws_iam_role.node_role: Creating...[0m
+  arn:                   "" => "<computed>"
+  assume_role_policy:    "" => "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"ec2.amazonaws.com\"\n      },\n      \"Effect\": \"Allow\",\n      \"Sid\": \"\"\n    }\n  ]\n}\n"
+  create_date:           "" => "<computed>"
+  force_detach_policies: "" => "false"
+  max_session_duration:  "" => "3600"
+  name:                  "" => "d2iq-workshop-fa75-node-role"
+  path:                  "" => "/"
+  unique_id:             "" => "<computed>"[0m
+[0m[1maws_key_pair.konvoy: Creating...[0m
+  fingerprint: "" => "<computed>"
+  key_name:    "" => "d2iq-workshop-fa75"
+  key_pair_id: "" => "<computed>"
+  public_key:  "" => "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC0bxjirnm9VFhL3bQEeheYBJhP+srGO6UbEFclN+6t/rVMVur27lCSqOjyu3WL7Jf+SmN61alr4tHtOXZIvkpTKY3n3KZscqyGHDTWvjoYIVsvhyszccqULJrWZSO6MlM9K0kFpBPAIV2gLMwn2bheLclnM8xwfASyxQTMNwJckFSkEdA/iI60+OANs/TJ1iSYXuaav9eFbUz/qYfuW7v1w5s2PF4loZVluDHxiNt34UFoYlmL9HO7uY0Gq/9Mu8veuXeS2dBTViuBhdW9V9wsv7yEF5O7sNsGMflFUVodGWt2yXX3x9BKtMlPZjwd9WEBqNOfiJ2eBS6Evg1KwemTu4lHACBPP7K4o4PiS5n/AuV0zMDNnCD/aIbfAQYJSeePqPuVLkuPc/piPG0yq7uK+NPzvIJB4RZ44LKN6sne+mpBhcF39ckw1dj22fo+W48esFIoKc6fdD6wQOYeqchlLLHHVfZH1GXZoIC2Am+Lj1qZQWUTL6xOXf+ocxioz6v0yeMziVssy0CfTMO4Bjn9EHjGfMWGq0M3gIunSqIjZZgUuXeGF+loWRdrFFJw25Z8/0asRDqib59MD1XfcX2ReMH1rO+4zk2zFyTypzNehfqZHay49O+E97Irq3vBW8KBy1a1r10Q/C7n5MCGENtj077jFkW9hm7IJ2mtYQtI6w=="[0m
+[0m[1maws_vpc.konvoy: Creating...[0m
+  arn:                                           "" => "<computed>"
+  assign_generated_ipv6_cidr_block:              "" => "false"
+  cidr_block:                                    "" => "10.0.0.0/16"
+  default_network_acl_id:                        "" => "<computed>"
+  default_route_table_id:                        "" => "<computed>"
+  default_security_group_id:                     "" => "<computed>"
+  dhcp_options_id:                               "" => "<computed>"
+  enable_classiclink:                            "" => "<computed>"
+  enable_classiclink_dns_support:                "" => "<computed>"
+  enable_dns_hostnames:                          "" => "true"
+  enable_dns_support:                            "" => "true"
+  instance_tenancy:                              "" => "default"
+  ipv6_association_id:                           "" => "<computed>"
+  ipv6_cidr_block:                               "" => "<computed>"
+  main_route_table_id:                           "" => "<computed>"
+  owner_id:                                      "" => "<computed>"
+  tags.%:                                        "" => "7"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-vpc"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.owner:                                    "" => "StudentWorkshop"[0m
+[0m[1maws_key_pair.konvoy: Creation complete after 1s (ID: d2iq-workshop-fa75)[0m[0m
+[0m[1maws_iam_role.node_role: Creation complete after 1s (ID: d2iq-workshop-fa75-node-role)[0m[0m
+[0m[1maws_iam_role_policy.agent_policy: Creating...[0m
+  name:   "" => "d2iq-workshop-fa75-node-policy"
+  policy: "" => "{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Sid\": \"KubernetesCloudProvider\",\n            \"Action\": [\n              \"ec2:CreateTags\",\n              \"ec2:DeleteTags\",\n              \"ec2:DescribeTags\",\n              \"ec2:DescribeInstances\",\n              \"ec2:CreateVolume\",\n              \"ec2:DeleteVolume\",\n              \"ec2:AttachVolume\",\n              \"ec2:DetachVolume\",\n              \"ec2:DescribeVolumes\",\n              \"ec2:DescribeVolumeStatus\",\n              \"ec2:DescribeVolumeAttribute\",\n              \"ec2:CreateSnapshot\",\n              \"ec2:CopySnapshot\",\n              \"ec2:DeleteSnapshot\",\n              \"ec2:DescribeSnapshots\",\n              \"ec2:DescribeSnapshotAttribute\",\n              \"ec2:AuthorizeSecurityGroupIngress\",\n              \"ec2:CreateRoute\",\n              \"ec2:CreateSecurityGroup\",\n              \"ec2:DeleteSecurityGroup\",\n              \"ec2:DeleteRoute\",\n              \"ec2:DescribeRouteTables\",\n              \"ec2:DescribeSubnets\",\n              \"ec2:DescribeSecurityGroups\",\n              \"ec2:ModifyInstanceAttribute\",\n              \"ec2:RevokeSecurityGroupIngress\",\n              \"elasticloadbalancing:AttachLoadBalancerToSubnets\",\n              \"elasticloadbalancing:ApplySecurityGroupsToLoadBalancer\",\n              \"elasticloadbalancing:CreateLoadBalancer\",\n              \"elasticloadbalancing:CreateLoadBalancerPolicy\",\n              \"elasticloadbalancing:CreateLoadBalancerListeners\",\n              \"elasticloadbalancing:ConfigureHealthCheck\",\n              \"elasticloadbalancing:DeleteLoadBalancer\",\n              \"elasticloadbalancing:DeleteLoadBalancerListeners\",\n              \"elasticloadbalancing:DescribeLoadBalancers\",\n              \"elasticloadbalancing:DescribeLoadBalancerAttributes\",\n              \"elasticloadbalancing:DetachLoadBalancerFromSubnets\",\n              \"elasticloadbalancing:DeregisterInstancesFromLoadBalancer\",\n              \"elasticloadbalancing:ModifyLoadBalancerAttributes\",\n              \"elasticloadbalancing:RegisterInstancesWithLoadBalancer\",\n              \"elasticloadbalancing:SetLoadBalancerPoliciesForBackendServer\"\n            ],\n            \"Resource\": \"*\",\n            \"Effect\": \"Allow\"\n        }\n    ]\n}\n"
+  role:   "" => "d2iq-workshop-fa75-node-role"[0m
+[0m[1maws_iam_instance_profile.node_profile: Creating...[0m
+  arn:         "" => "<computed>"
+  create_date: "" => "<computed>"
+  name:        "" => "d2iq-workshop-fa75-node-profile"
+  path:        "" => "/"
+  role:        "" => "d2iq-workshop-fa75-node-role"
+  roles.#:     "" => "<computed>"
+  unique_id:   "" => "<computed>"[0m
+[0m[1maws_iam_role_policy.agent_policy: Creation complete after 0s (ID: d2iq-workshop-fa75-node-role:d2iq-workshop-fa75-node-policy)[0m[0m
+[0m[1maws_iam_instance_profile.node_profile: Creation complete after 0s (ID: d2iq-workshop-fa75-node-profile)[0m[0m
+[0m[1maws_vpc.konvoy: Creation complete after 2s (ID: vpc-02bc3ded61ec19930)[0m[0m
+[0m[1maws_subnet.konvoy_private[4]: Creating...[0m
+  arn:                             "" => "<computed>"
+  assign_ipv6_address_on_creation: "" => "false"
+  availability_zone:               "" => "us-east-1f"
+  availability_zone_id:            "" => "<computed>"
+  cidr_block:                      "" => "10.0.144.0/22"
+  ipv6_cidr_block:                 "" => "<computed>"
+  ipv6_cidr_block_association_id:  "" => "<computed>"
+  map_public_ip_on_launch:         "" => "false"
+  owner_id:                        "" => "<computed>"
+  tags.%:                          "" => "6"
+  tags.Name:                       "" => "d2iq-workshop-fa75-subnet-private"
+  tags.expiration:                 "" => "8h"
+  tags.konvoy/clusterName:         "" => "d2iq-workshop-fa75"
+  tags.konvoy/subnet:              "" => "private"
+  tags.konvoy/version:             "" => "v1.4.0"
+  tags.owner:                      "" => "StudentWorkshop"
+  vpc_id:                          "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_subnet.konvoy_private[2]: Creating...[0m
+  arn:                             "" => "<computed>"
+  assign_ipv6_address_on_creation: "" => "false"
+  availability_zone:               "" => "us-east-1c"
+  availability_zone_id:            "" => "<computed>"
+  cidr_block:                      "" => "10.0.136.0/22"
+  ipv6_cidr_block:                 "" => "<computed>"
+  ipv6_cidr_block_association_id:  "" => "<computed>"
+  map_public_ip_on_launch:         "" => "false"
+  owner_id:                        "" => "<computed>"
+  tags.%:                          "" => "6"
+  tags.Name:                       "" => "d2iq-workshop-fa75-subnet-private"
+  tags.expiration:                 "" => "8h"
+  tags.konvoy/clusterName:         "" => "d2iq-workshop-fa75"
+  tags.konvoy/subnet:              "" => "private"
+  tags.konvoy/version:             "" => "v1.4.0"
+  tags.owner:                      "" => "StudentWorkshop"
+  vpc_id:                          "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_subnet.konvoy_private[3]: Creating...[0m
+  arn:                             "" => "<computed>"
+  assign_ipv6_address_on_creation: "" => "false"
+  availability_zone:               "" => "us-east-1d"
+  availability_zone_id:            "" => "<computed>"
+  cidr_block:                      "" => "10.0.140.0/22"
+  ipv6_cidr_block:                 "" => "<computed>"
+  ipv6_cidr_block_association_id:  "" => "<computed>"
+  map_public_ip_on_launch:         "" => "false"
+  owner_id:                        "" => "<computed>"
+  tags.%:                          "" => "6"
+  tags.Name:                       "" => "d2iq-workshop-fa75-subnet-private"
+  tags.expiration:                 "" => "8h"
+  tags.konvoy/clusterName:         "" => "d2iq-workshop-fa75"
+  tags.konvoy/subnet:              "" => "private"
+  tags.konvoy/version:             "" => "v1.4.0"
+  tags.owner:                      "" => "StudentWorkshop"
+  vpc_id:                          "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_default_route_table.konvoy_router: Creating...[0m
+  default_route_table_id:                        "" => "rtb-02897713b530db8f1"
+  owner_id:                                      "" => "<computed>"
+  route.#:                                       "" => "<computed>"
+  tags.%:                                        "" => "7"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-router"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.owner:                                    "" => "StudentWorkshop"
+  vpc_id:                                        "" => "<computed>"[0m
+[0m[1maws_subnet.konvoy_public[0]: Creating...[0m
+  arn:                                           "" => "<computed>"
+  assign_ipv6_address_on_creation:               "" => "false"
+  availability_zone:                             "" => "us-east-1a"
+  availability_zone_id:                          "" => "<computed>"
+  cidr_block:                                    "" => "10.0.64.0/22"
+  ipv6_cidr_block:                               "" => "<computed>"
+  ipv6_cidr_block_association_id:                "" => "<computed>"
+  map_public_ip_on_launch:                       "" => "true"
+  owner_id:                                      "" => "<computed>"
+  tags.%:                                        "" => "8"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-subnet-public"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/subnet:                            "" => "public"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.owner:                                    "" => "StudentWorkshop"
+  vpc_id:                                        "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_subnet.konvoy_public[2]: Creating...[0m
+  arn:                                           "" => "<computed>"
+  assign_ipv6_address_on_creation:               "" => "false"
+  availability_zone:                             "" => "us-east-1c"
+  availability_zone_id:                          "" => "<computed>"
+  cidr_block:                                    "" => "10.0.72.0/22"
+  ipv6_cidr_block:                               "" => "<computed>"
+  ipv6_cidr_block_association_id:                "" => "<computed>"
+  map_public_ip_on_launch:                       "" => "true"
+  owner_id:                                      "" => "<computed>"
+  tags.%:                                        "" => "8"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-subnet-public"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/subnet:                            "" => "public"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.owner:                                    "" => "StudentWorkshop"
+  vpc_id:                                        "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_subnet.konvoy_control_plane[2]: Creating...[0m
+  arn:                                           "" => "<computed>"
+  assign_ipv6_address_on_creation:               "" => "false"
+  availability_zone:                             "" => "us-east-1c"
+  availability_zone_id:                          "" => "<computed>"
+  cidr_block:                                    "" => "10.0.200.0/22"
+  ipv6_cidr_block:                               "" => "<computed>"
+  ipv6_cidr_block_association_id:                "" => "<computed>"
+  map_public_ip_on_launch:                       "" => "false"
+  owner_id:                                      "" => "<computed>"
+  tags.%:                                        "" => "9"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-subnet-control-plane"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/subnet:                            "" => "control_plane"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.kubernetes.io/role/elb:                   "" => "1"
+  tags.owner:                                    "" => "StudentWorkshop"
+  vpc_id:                                        "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_default_route_table.konvoy_router: Creation complete after 0s (ID: rtb-02897713b530db8f1)[0m[0m
+[0m[1maws_subnet.konvoy_control_plane[1]: Creating...[0m
+  arn:                                           "" => "<computed>"
+  assign_ipv6_address_on_creation:               "" => "false"
+  availability_zone:                             "" => "us-east-1b"
+  availability_zone_id:                          "" => "<computed>"
+  cidr_block:                                    "" => "10.0.196.0/22"
+  ipv6_cidr_block:                               "" => "<computed>"
+  ipv6_cidr_block_association_id:                "" => "<computed>"
+  map_public_ip_on_launch:                       "" => "false"
+  owner_id:                                      "" => "<computed>"
+  tags.%:                                        "" => "9"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-subnet-control-plane"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/subnet:                            "" => "control_plane"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.kubernetes.io/role/elb:                   "" => "1"
+  tags.owner:                                    "" => "StudentWorkshop"
+  vpc_id:                                        "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_subnet.konvoy_private[2]: Creation complete after 1s (ID: subnet-0a29a1cdc1191c01d)[0m[0m
+[0m[1maws_subnet.konvoy_control_plane[4]: Creating...[0m
+  arn:                                           "" => "<computed>"
+  assign_ipv6_address_on_creation:               "" => "false"
+  availability_zone:                             "" => "us-east-1f"
+  availability_zone_id:                          "" => "<computed>"
+  cidr_block:                                    "" => "10.0.208.0/22"
+  ipv6_cidr_block:                               "" => "<computed>"
+  ipv6_cidr_block_association_id:                "" => "<computed>"
+  map_public_ip_on_launch:                       "" => "false"
+  owner_id:                                      "" => "<computed>"
+  tags.%:                                        "" => "9"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-subnet-control-plane"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/subnet:                            "" => "control_plane"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.kubernetes.io/role/elb:                   "" => "1"
+  tags.owner:                                    "" => "StudentWorkshop"
+  vpc_id:                                        "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_subnet.konvoy_control_plane[2]: Creation complete after 1s (ID: subnet-0d8d7f01a2311e092)[0m[0m
+[0m[1maws_subnet.konvoy_private[1]: Creating...[0m
+  arn:                             "" => "<computed>"
+  assign_ipv6_address_on_creation: "" => "false"
+  availability_zone:               "" => "us-east-1b"
+  availability_zone_id:            "" => "<computed>"
+  cidr_block:                      "" => "10.0.132.0/22"
+  ipv6_cidr_block:                 "" => "<computed>"
+  ipv6_cidr_block_association_id:  "" => "<computed>"
+  map_public_ip_on_launch:         "" => "false"
+  owner_id:                        "" => "<computed>"
+  tags.%:                          "" => "6"
+  tags.Name:                       "" => "d2iq-workshop-fa75-subnet-private"
+  tags.expiration:                 "" => "8h"
+  tags.konvoy/clusterName:         "" => "d2iq-workshop-fa75"
+  tags.konvoy/subnet:              "" => "private"
+  tags.konvoy/version:             "" => "v1.4.0"
+  tags.owner:                      "" => "StudentWorkshop"
+  vpc_id:                          "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_subnet.konvoy_private[3]: Creation complete after 1s (ID: subnet-087ed3d6572443236)[0m[0m
+[0m[1maws_subnet.konvoy_private[0]: Creating...[0m
+  arn:                             "" => "<computed>"
+  assign_ipv6_address_on_creation: "" => "false"
+  availability_zone:               "" => "us-east-1a"
+  availability_zone_id:            "" => "<computed>"
+  cidr_block:                      "" => "10.0.128.0/22"
+  ipv6_cidr_block:                 "" => "<computed>"
+  ipv6_cidr_block_association_id:  "" => "<computed>"
+  map_public_ip_on_launch:         "" => "false"
+  owner_id:                        "" => "<computed>"
+  tags.%:                          "" => "6"
+  tags.Name:                       "" => "d2iq-workshop-fa75-subnet-private"
+  tags.expiration:                 "" => "8h"
+  tags.konvoy/clusterName:         "" => "d2iq-workshop-fa75"
+  tags.konvoy/subnet:              "" => "private"
+  tags.konvoy/version:             "" => "v1.4.0"
+  tags.owner:                      "" => "StudentWorkshop"
+  vpc_id:                          "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_subnet.konvoy_private[4]: Creation complete after 1s (ID: subnet-07f95780e118ff35e)[0m[0m
+[0m[1maws_subnet.konvoy_control_plane[3]: Creating...[0m
+  arn:                                           "" => "<computed>"
+  assign_ipv6_address_on_creation:               "" => "false"
+  availability_zone:                             "" => "us-east-1d"
+  availability_zone_id:                          "" => "<computed>"
+  cidr_block:                                    "" => "10.0.204.0/22"
+  ipv6_cidr_block:                               "" => "<computed>"
+  ipv6_cidr_block_association_id:                "" => "<computed>"
+  map_public_ip_on_launch:                       "" => "false"
+  owner_id:                                      "" => "<computed>"
+  tags.%:                                        "" => "9"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-subnet-control-plane"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/subnet:                            "" => "control_plane"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.kubernetes.io/role/elb:                   "" => "1"
+  tags.owner:                                    "" => "StudentWorkshop"
+  vpc_id:                                        "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_subnet.konvoy_public[0]: Creation complete after 1s (ID: subnet-057dbc5e08ea13bea)[0m[0m
+[0m[1maws_subnet.konvoy_control_plane[1]: Creation complete after 1s (ID: subnet-0841f1aab40543032)[0m[0m
+[0m[1maws_subnet.konvoy_public[2]: Creation complete after 1s (ID: subnet-0c84058aedc970023)[0m[0m
+[0m[1maws_subnet.konvoy_control_plane[0]: Creating...[0m
+  arn:                                           "" => "<computed>"
+  assign_ipv6_address_on_creation:               "" => "false"
+  availability_zone:                             "" => "us-east-1a"
+  availability_zone_id:                          "" => "<computed>"
+  cidr_block:                                    "" => "10.0.192.0/22"
+  ipv6_cidr_block:                               "" => "<computed>"
+  ipv6_cidr_block_association_id:                "" => "<computed>"
+  map_public_ip_on_launch:                       "" => "false"
+  owner_id:                                      "" => "<computed>"
+  tags.%:                                        "" => "9"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-subnet-control-plane"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/subnet:                            "" => "control_plane"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.kubernetes.io/role/elb:                   "" => "1"
+  tags.owner:                                    "" => "StudentWorkshop"
+  vpc_id:                                        "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_subnet.konvoy_public[1]: Creating...[0m
+  arn:                                           "" => "<computed>"
+  assign_ipv6_address_on_creation:               "" => "false"
+  availability_zone:                             "" => "us-east-1b"
+  availability_zone_id:                          "" => "<computed>"
+  cidr_block:                                    "" => "10.0.68.0/22"
+  ipv6_cidr_block:                               "" => "<computed>"
+  ipv6_cidr_block_association_id:                "" => "<computed>"
+  map_public_ip_on_launch:                       "" => "true"
+  owner_id:                                      "" => "<computed>"
+  tags.%:                                        "" => "8"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-subnet-public"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/subnet:                            "" => "public"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.owner:                                    "" => "StudentWorkshop"
+  vpc_id:                                        "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_subnet.konvoy_public[3]: Creating...[0m
+  arn:                                           "" => "<computed>"
+  assign_ipv6_address_on_creation:               "" => "false"
+  availability_zone:                             "" => "us-east-1d"
+  availability_zone_id:                          "" => "<computed>"
+  cidr_block:                                    "" => "10.0.76.0/22"
+  ipv6_cidr_block:                               "" => "<computed>"
+  ipv6_cidr_block_association_id:                "" => "<computed>"
+  map_public_ip_on_launch:                       "" => "true"
+  owner_id:                                      "" => "<computed>"
+  tags.%:                                        "" => "8"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-subnet-public"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/subnet:                            "" => "public"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.owner:                                    "" => "StudentWorkshop"
+  vpc_id:                                        "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_subnet.konvoy_control_plane[4]: Creation complete after 0s (ID: subnet-0125f64d5700d8b34)[0m[0m
+[0m[1maws_subnet.konvoy_public[4]: Creating...[0m
+  arn:                                           "" => "<computed>"
+  assign_ipv6_address_on_creation:               "" => "false"
+  availability_zone:                             "" => "us-east-1f"
+  availability_zone_id:                          "" => "<computed>"
+  cidr_block:                                    "" => "10.0.80.0/22"
+  ipv6_cidr_block:                               "" => "<computed>"
+  ipv6_cidr_block_association_id:                "" => "<computed>"
+  map_public_ip_on_launch:                       "" => "true"
+  owner_id:                                      "" => "<computed>"
+  tags.%:                                        "" => "8"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-subnet-public"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/subnet:                            "" => "public"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.owner:                                    "" => "StudentWorkshop"
+  vpc_id:                                        "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_subnet.konvoy_private[0]: Creation complete after 0s (ID: subnet-0175184cc99375bae)[0m[0m
+[0m[1maws_security_group.konvoy_private: Creating...[0m
+  arn:                                           "" => "<computed>"
+  description:                                   "" => "Allow all communication between nodes."
+  egress.#:                                      "" => "1"
+  egress.753360330.cidr_blocks.#:                "" => "0"
+  egress.753360330.description:                  "" => ""
+  egress.753360330.from_port:                    "" => "0"
+  egress.753360330.ipv6_cidr_blocks.#:           "" => "0"
+  egress.753360330.prefix_list_ids.#:            "" => "0"
+  egress.753360330.protocol:                     "" => "-1"
+  egress.753360330.security_groups.#:            "" => "0"
+  egress.753360330.self:                         "" => "true"
+  egress.753360330.to_port:                      "" => "0"
+  ingress.#:                                     "" => "1"
+  ingress.753360330.cidr_blocks.#:               "" => "0"
+  ingress.753360330.description:                 "" => ""
+  ingress.753360330.from_port:                   "" => "0"
+  ingress.753360330.ipv6_cidr_blocks.#:          "" => "0"
+  ingress.753360330.prefix_list_ids.#:           "" => "0"
+  ingress.753360330.protocol:                    "" => "-1"
+  ingress.753360330.security_groups.#:           "" => "0"
+  ingress.753360330.self:                        "" => "true"
+  ingress.753360330.to_port:                     "" => "0"
+  name:                                          "" => "d2iq-workshop-fa75-sg-private"
+  owner_id:                                      "" => "<computed>"
+  revoke_rules_on_delete:                        "" => "false"
+  tags.%:                                        "" => "8"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-securitygroup-private"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/securityGroup:                     "" => "private"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.owner:                                    "" => "StudentWorkshop"
+  vpc_id:                                        "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_subnet.konvoy_private[1]: Creation complete after 1s (ID: subnet-0fef32e7031b4a8a7)[0m[0m
+[0m[1maws_subnet.konvoy_control_plane[3]: Creation complete after 1s (ID: subnet-0fa50272eaf71be75)[0m[0m
+[0m[1maws_subnet.konvoy_control_plane[0]: Creation complete after 1s (ID: subnet-060f00581dafab067)[0m[0m
+[0m[1maws_security_group.konvoy_egress: Creating...[0m
+  arn:                                 "" => "<computed>"
+  description:                         "" => "Allow all egress communication."
+  egress.#:                            "" => "1"
+  egress.482069346.cidr_blocks.#:      "" => "1"
+  egress.482069346.cidr_blocks.0:      "" => "0.0.0.0/0"
+  egress.482069346.description:        "" => ""
+  egress.482069346.from_port:          "" => "0"
+  egress.482069346.ipv6_cidr_blocks.#: "" => "0"
+  egress.482069346.prefix_list_ids.#:  "" => "0"
+  egress.482069346.protocol:           "" => "-1"
+  egress.482069346.security_groups.#:  "" => "0"
+  egress.482069346.self:               "" => "false"
+  egress.482069346.to_port:            "" => "0"
+  ingress.#:                           "" => "<computed>"
+  name:                                "" => "d2iq-workshop-fa75-sg-egress"
+  owner_id:                            "" => "<computed>"
+  revoke_rules_on_delete:              "" => "false"
+  tags.%:                              "" => "6"
+  tags.Name:                           "" => "d2iq-workshop-fa75-securitygroup-egress"
+  tags.expiration:                     "" => "8h"
+  tags.konvoy/clusterName:             "" => "d2iq-workshop-fa75"
+  tags.konvoy/securityGroup:           "" => "egress"
+  tags.konvoy/version:                 "" => "v1.4.0"
+  tags.owner:                          "" => "StudentWorkshop"
+  vpc_id:                              "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_security_group.konvoy_lb_control_plane: Creating...[0m
+  arn:                                   "" => "<computed>"
+  description:                           "" => "Allow inbound on 6443 for kube-apiserver load balancer."
+  egress.#:                              "" => "<computed>"
+  ingress.#:                             "" => "1"
+  ingress.1463360607.cidr_blocks.#:      "" => "1"
+  ingress.1463360607.cidr_blocks.0:      "" => "0.0.0.0/0"
+  ingress.1463360607.description:        "" => ""
+  ingress.1463360607.from_port:          "" => "6443"
+  ingress.1463360607.ipv6_cidr_blocks.#: "" => "0"
+  ingress.1463360607.prefix_list_ids.#:  "" => "0"
+  ingress.1463360607.protocol:           "" => "tcp"
+  ingress.1463360607.security_groups.#:  "" => "0"
+  ingress.1463360607.self:               "" => "false"
+  ingress.1463360607.to_port:            "" => "6443"
+  name:                                  "" => "d2iq-workshop-fa75-sg-lb-control"
+  owner_id:                              "" => "<computed>"
+  revoke_rules_on_delete:                "" => "false"
+  tags.%:                                "" => "6"
+  tags.Name:                             "" => "d2iq-workshop-fa75-securitygroup-lb-control-plane"
+  tags.expiration:                       "" => "8h"
+  tags.konvoy/clusterName:               "" => "d2iq-workshop-fa75"
+  tags.konvoy/securityGroup:             "" => "lb-control-plane"
+  tags.konvoy/version:                   "" => "v1.4.0"
+  tags.owner:                            "" => "StudentWorkshop"
+  vpc_id:                                "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_security_group.konvoy_ssh: Creating...[0m
+  arn:                                   "" => "<computed>"
+  description:                           "" => "Allow inbound SSH for Konvoy."
+  egress.#:                              "" => "<computed>"
+  ingress.#:                             "" => "1"
+  ingress.2541437006.cidr_blocks.#:      "" => "1"
+  ingress.2541437006.cidr_blocks.0:      "" => "0.0.0.0/0"
+  ingress.2541437006.description:        "" => ""
+  ingress.2541437006.from_port:          "" => "22"
+  ingress.2541437006.ipv6_cidr_blocks.#: "" => "0"
+  ingress.2541437006.prefix_list_ids.#:  "" => "0"
+  ingress.2541437006.protocol:           "" => "tcp"
+  ingress.2541437006.security_groups.#:  "" => "0"
+  ingress.2541437006.self:               "" => "false"
+  ingress.2541437006.to_port:            "" => "22"
+  name:                                  "" => "d2iq-workshop-fa75-sg-ssh"
+  owner_id:                              "" => "<computed>"
+  revoke_rules_on_delete:                "" => "false"
+  tags.%:                                "" => "6"
+  tags.Name:                             "" => "d2iq-workshop-fa75-securitygroup-ssh"
+  tags.expiration:                       "" => "8h"
+  tags.konvoy/clusterName:               "" => "d2iq-workshop-fa75"
+  tags.konvoy/securityGroup:             "" => "ssh"
+  tags.konvoy/version:                   "" => "v1.4.0"
+  tags.owner:                            "" => "StudentWorkshop"
+  vpc_id:                                "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_subnet.konvoy_public[3]: Creation complete after 1s (ID: subnet-02b21e1d0e4242d39)[0m[0m
+[0m[1maws_internet_gateway.konvoy_gateway: Creating...[0m
+  owner_id:                                      "" => "<computed>"
+  tags.%:                                        "0" => "7"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-gateway"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.owner:                                    "" => "StudentWorkshop"
+  vpc_id:                                        "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_subnet.konvoy_public[1]: Creation complete after 1s (ID: subnet-003842648d38ec57d)[0m[0m
+[0m[1maws_internet_gateway.konvoy_gateway: Creation complete after 0s (ID: igw-0853ca9ab2375e185)[0m[0m
+[0m[1maws_subnet.konvoy_public[4]: Creation complete after 1s (ID: subnet-02790a1cfc8b721a9)[0m[0m
+[0m[1maws_route.konvoy_gateway_route: Creating...[0m
+  destination_cidr_block:     "" => "0.0.0.0/0"
+  destination_prefix_list_id: "" => "<computed>"
+  egress_only_gateway_id:     "" => "<computed>"
+  gateway_id:                 "" => "igw-0853ca9ab2375e185"
+  instance_id:                "" => "<computed>"
+  instance_owner_id:          "" => "<computed>"
+  nat_gateway_id:             "" => "<computed>"
+  network_interface_id:       "" => "<computed>"
+  origin:                     "" => "<computed>"
+  route_table_id:             "" => "rtb-02897713b530db8f1"
+  state:                      "" => "<computed>"[0m
+[0m[1maws_route.konvoy_gateway_route: Creation complete after 1s (ID: r-rtb-02897713b530db8f11080289494)[0m[0m
+[0m[1maws_security_group.konvoy_private: Creation complete after 2s (ID: sg-02be8edb2aa4e5ac8)[0m[0m
+[0m[1maws_vpc_endpoint.ec2: Creating...[0m
+  cidr_blocks.#:                                 "" => "<computed>"
+  dns_entry.#:                                   "" => "<computed>"
+  network_interface_ids.#:                       "" => "<computed>"
+  owner_id:                                      "" => "<computed>"
+  policy:                                        "" => "<computed>"
+  prefix_list_id:                                "" => "<computed>"
+  private_dns_enabled:                           "" => "true"
+  requester_managed:                             "" => "<computed>"
+  route_table_ids.#:                             "" => "<computed>"
+  security_group_ids.#:                          "" => "1"
+  security_group_ids.2192947863:                 "" => "sg-02be8edb2aa4e5ac8"
+  service_name:                                  "" => "com.amazonaws.us-east-1.ec2"
+  state:                                         "" => "<computed>"
+  subnet_ids.#:                                  "" => "5"
+  subnet_ids.1113469324:                         "" => "subnet-0841f1aab40543032"
+  subnet_ids.1303018551:                         "" => "subnet-0fa50272eaf71be75"
+  subnet_ids.2329172583:                         "" => "subnet-060f00581dafab067"
+  subnet_ids.2652084952:                         "" => "subnet-0125f64d5700d8b34"
+  subnet_ids.3729892770:                         "" => "subnet-0d8d7f01a2311e092"
+  tags.%:                                        "" => "7"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-vpc-endpoint-ec2"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.owner:                                    "" => "StudentWorkshop"
+  vpc_endpoint_type:                             "" => "Interface"
+  vpc_id:                                        "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_vpc_endpoint.elasticloadbalancing: Creating...[0m
+  cidr_blocks.#:                                 "" => "<computed>"
+  dns_entry.#:                                   "" => "<computed>"
+  network_interface_ids.#:                       "" => "<computed>"
+  owner_id:                                      "" => "<computed>"
+  policy:                                        "" => "<computed>"
+  prefix_list_id:                                "" => "<computed>"
+  private_dns_enabled:                           "" => "true"
+  requester_managed:                             "" => "<computed>"
+  route_table_ids.#:                             "" => "<computed>"
+  security_group_ids.#:                          "" => "1"
+  security_group_ids.2192947863:                 "" => "sg-02be8edb2aa4e5ac8"
+  service_name:                                  "" => "com.amazonaws.us-east-1.elasticloadbalancing"
+  state:                                         "" => "<computed>"
+  subnet_ids.#:                                  "" => "5"
+  subnet_ids.1113469324:                         "" => "subnet-0841f1aab40543032"
+  subnet_ids.1303018551:                         "" => "subnet-0fa50272eaf71be75"
+  subnet_ids.2329172583:                         "" => "subnet-060f00581dafab067"
+  subnet_ids.2652084952:                         "" => "subnet-0125f64d5700d8b34"
+  subnet_ids.3729892770:                         "" => "subnet-0d8d7f01a2311e092"
+  tags.%:                                        "" => "7"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-vpc-endpoint-elasticloadbalancing"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.owner:                                    "" => "StudentWorkshop"
+  vpc_endpoint_type:                             "" => "Interface"
+  vpc_id:                                        "" => "vpc-02bc3ded61ec19930"[0m
+[0m[1maws_security_group.konvoy_egress: Creation complete after 1s (ID: sg-0da4297ce109e6768)[0m[0m
+[0m[1maws_security_group.konvoy_ssh: Creation complete after 1s (ID: sg-084e5ab3a03919e78)[0m[0m
+[0m[1maws_security_group.konvoy_lb_control_plane: Creation complete after 1s (ID: sg-0e5cd26d88d738211)[0m[0m
+[0m[1maws_instance.control_plane[0]: Creating...[0m
+  ami:                                           "" => "ami-02eac2c0129f6376b"
+  arn:                                           "" => "<computed>"
+  associate_public_ip_address:                   "" => "true"
+  availability_zone:                             "" => "us-east-1a"
+  cpu_core_count:                                "" => "<computed>"
+  cpu_threads_per_core:                          "" => "<computed>"
+  ebs_block_device.#:                            "" => "<computed>"
+  ephemeral_block_device.#:                      "" => "<computed>"
+  get_password_data:                             "" => "false"
+  host_id:                                       "" => "<computed>"
+  iam_instance_profile:                          "" => "d2iq-workshop-fa75-node-profile"
+  instance_state:                                "" => "<computed>"
+  instance_type:                                 "" => "m5.xlarge"
+  ipv6_address_count:                            "" => "<computed>"
+  ipv6_addresses.#:                              "" => "<computed>"
+  key_name:                                      "" => "d2iq-workshop-fa75"
+  network_interface.#:                           "" => "<computed>"
+  network_interface_id:                          "" => "<computed>"
+  password_data:                                 "" => "<computed>"
+  placement_group:                               "" => "<computed>"
+  primary_network_interface_id:                  "" => "<computed>"
+  private_dns:                                   "" => "<computed>"
+  private_ip:                                    "" => "<computed>"
+  public_dns:                                    "" => "<computed>"
+  public_ip:                                     "" => "<computed>"
+  root_block_device.#:                           "" => "1"
+  root_block_device.0.delete_on_termination:     "" => "true"
+  root_block_device.0.encrypted:                 "" => "<computed>"
+  root_block_device.0.iops:                      "" => "1000"
+  root_block_device.0.kms_key_id:                "" => "<computed>"
+  root_block_device.0.volume_id:                 "" => "<computed>"
+  root_block_device.0.volume_size:               "" => "80"
+  root_block_device.0.volume_type:               "" => "io1"
+  security_groups.#:                             "" => "<computed>"
+  source_dest_check:                             "" => "false"
+  subnet_id:                                     "" => "subnet-060f00581dafab067"
+  tags.%:                                        "" => "8"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-control-plane-0"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/nodeRoles:                         "" => "control_plane"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.owner:                                    "" => "StudentWorkshop"
+  tenancy:                                       "" => "<computed>"
+  volume_tags.%:                                 "" => "5"
+  volume_tags.expiration:                        "" => "8h"
+  volume_tags.konvoy/clusterName:                "" => "d2iq-workshop-fa75"
+  volume_tags.konvoy/nodeRoles:                  "" => "control_plane"
+  volume_tags.konvoy/version:                    "" => "v1.4.0"
+  volume_tags.owner:                             "" => "StudentWorkshop"
+  vpc_security_group_ids.#:                      "" => "3"
+  vpc_security_group_ids.2027257964:             "" => "sg-0da4297ce109e6768"
+  vpc_security_group_ids.2192947863:             "" => "sg-02be8edb2aa4e5ac8"
+  vpc_security_group_ids.2754662363:             "" => "sg-084e5ab3a03919e78"[0m
+[0m[1maws_instance.worker_pool0[1]: Creating...[0m
+  ami:                                           "" => "ami-02eac2c0129f6376b"
+  arn:                                           "" => "<computed>"
+  associate_public_ip_address:                   "" => "true"
+  availability_zone:                             "" => "us-east-1b"
+  cpu_core_count:                                "" => "<computed>"
+  cpu_threads_per_core:                          "" => "<computed>"
+  ebs_block_device.#:                            "" => "<computed>"
+  ephemeral_block_device.#:                      "" => "<computed>"
+  get_password_data:                             "" => "false"
+  host_id:                                       "" => "<computed>"
+  iam_instance_profile:                          "" => "d2iq-workshop-fa75-node-profile"
+  instance_state:                                "" => "<computed>"
+  instance_type:                                 "" => "m5.2xlarge"
+  ipv6_address_count:                            "" => "<computed>"
+  ipv6_addresses.#:                              "" => "<computed>"
+  key_name:                                      "" => "d2iq-workshop-fa75"
+  network_interface.#:                           "" => "<computed>"
+  network_interface_id:                          "" => "<computed>"
+  password_data:                                 "" => "<computed>"
+  placement_group:                               "" => "<computed>"
+  primary_network_interface_id:                  "" => "<computed>"
+  private_dns:                                   "" => "<computed>"
+  private_ip:                                    "" => "<computed>"
+  public_dns:                                    "" => "<computed>"
+  public_ip:                                     "" => "<computed>"
+  root_block_device.#:                           "" => "1"
+  root_block_device.0.delete_on_termination:     "" => "true"
+  root_block_device.0.encrypted:                 "" => "<computed>"
+  root_block_device.0.kms_key_id:                "" => "<computed>"
+  root_block_device.0.volume_id:                 "" => "<computed>"
+  root_block_device.0.volume_size:               "" => "80"
+  root_block_device.0.volume_type:               "" => "gp2"
+  security_groups.#:                             "" => "<computed>"
+  source_dest_check:                             "" => "false"
+  subnet_id:                                     "" => "subnet-0fef32e7031b4a8a7"
+  tags.%:                                        "" => "8"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-worker-1"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/nodeRoles:                         "" => "worker"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.owner:                                    "" => "StudentWorkshop"
+  tenancy:                                       "" => "<computed>"
+  volume_tags.%:                                 "" => "5"
+  volume_tags.expiration:                        "" => "8h"
+  volume_tags.konvoy/clusterName:                "" => "d2iq-workshop-fa75"
+  volume_tags.konvoy/nodeRoles:                  "" => "worker"
+  volume_tags.konvoy/version:                    "" => "v1.4.0"
+  volume_tags.owner:                             "" => "StudentWorkshop"
+  vpc_security_group_ids.#:                      "" => "3"
+  vpc_security_group_ids.2027257964:             "" => "sg-0da4297ce109e6768"
+  vpc_security_group_ids.2192947863:             "" => "sg-02be8edb2aa4e5ac8"
+  vpc_security_group_ids.2754662363:             "" => "sg-084e5ab3a03919e78"[0m
+[0m[1maws_instance.control_plane[2]: Creating...[0m
+  ami:                                           "" => "ami-02eac2c0129f6376b"
+  arn:                                           "" => "<computed>"
+  associate_public_ip_address:                   "" => "true"
+  availability_zone:                             "" => "us-east-1c"
+  cpu_core_count:                                "" => "<computed>"
+  cpu_threads_per_core:                          "" => "<computed>"
+  ebs_block_device.#:                            "" => "<computed>"
+  ephemeral_block_device.#:                      "" => "<computed>"
+  get_password_data:                             "" => "false"
+  host_id:                                       "" => "<computed>"
+  iam_instance_profile:                          "" => "d2iq-workshop-fa75-node-profile"
+  instance_state:                                "" => "<computed>"
+  instance_type:                                 "" => "m5.xlarge"
+  ipv6_address_count:                            "" => "<computed>"
+  ipv6_addresses.#:                              "" => "<computed>"
+  key_name:                                      "" => "d2iq-workshop-fa75"
+  network_interface.#:                           "" => "<computed>"
+  network_interface_id:                          "" => "<computed>"
+  password_data:                                 "" => "<computed>"
+  placement_group:                               "" => "<computed>"
+  primary_network_interface_id:                  "" => "<computed>"
+  private_dns:                                   "" => "<computed>"
+  private_ip:                                    "" => "<computed>"
+  public_dns:                                    "" => "<computed>"
+  public_ip:                                     "" => "<computed>"
+  root_block_device.#:                           "" => "1"
+  root_block_device.0.delete_on_termination:     "" => "true"
+  root_block_device.0.encrypted:                 "" => "<computed>"
+  root_block_device.0.iops:                      "" => "1000"
+  root_block_device.0.kms_key_id:                "" => "<computed>"
+  root_block_device.0.volume_id:                 "" => "<computed>"
+  root_block_device.0.volume_size:               "" => "80"
+  root_block_device.0.volume_type:               "" => "io1"
+  security_groups.#:                             "" => "<computed>"
+  source_dest_check:                             "" => "false"
+  subnet_id:                                     "" => "subnet-0d8d7f01a2311e092"
+  tags.%:                                        "" => "8"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-control-plane-2"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/nodeRoles:                         "" => "control_plane"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.owner:                                    "" => "StudentWorkshop"
+  tenancy:                                       "" => "<computed>"
+  volume_tags.%:                                 "" => "5"
+  volume_tags.expiration:                        "" => "8h"
+  volume_tags.konvoy/clusterName:                "" => "d2iq-workshop-fa75"
+  volume_tags.konvoy/nodeRoles:                  "" => "control_plane"
+  volume_tags.konvoy/version:                    "" => "v1.4.0"
+  volume_tags.owner:                             "" => "StudentWorkshop"
+  vpc_security_group_ids.#:                      "" => "3"
+  vpc_security_group_ids.2027257964:             "" => "sg-0da4297ce109e6768"
+  vpc_security_group_ids.2192947863:             "" => "sg-02be8edb2aa4e5ac8"
+  vpc_security_group_ids.2754662363:             "" => "sg-084e5ab3a03919e78"[0m
+[0m[1maws_instance.control_plane[1]: Creating...[0m
+  ami:                                           "" => "ami-02eac2c0129f6376b"
+  arn:                                           "" => "<computed>"
+  associate_public_ip_address:                   "" => "true"
+  availability_zone:                             "" => "us-east-1b"
+  cpu_core_count:                                "" => "<computed>"
+  cpu_threads_per_core:                          "" => "<computed>"
+  ebs_block_device.#:                            "" => "<computed>"
+  ephemeral_block_device.#:                      "" => "<computed>"
+  get_password_data:                             "" => "false"
+  host_id:                                       "" => "<computed>"
+  iam_instance_profile:                          "" => "d2iq-workshop-fa75-node-profile"
+  instance_state:                                "" => "<computed>"
+  instance_type:                                 "" => "m5.xlarge"
+  ipv6_address_count:                            "" => "<computed>"
+  ipv6_addresses.#:                              "" => "<computed>"
+  key_name:                                      "" => "d2iq-workshop-fa75"
+  network_interface.#:                           "" => "<computed>"
+  network_interface_id:                          "" => "<computed>"
+  password_data:                                 "" => "<computed>"
+  placement_group:                               "" => "<computed>"
+  primary_network_interface_id:                  "" => "<computed>"
+  private_dns:                                   "" => "<computed>"
+  private_ip:                                    "" => "<computed>"
+  public_dns:                                    "" => "<computed>"
+  public_ip:                                     "" => "<computed>"
+  root_block_device.#:                           "" => "1"
+  root_block_device.0.delete_on_termination:     "" => "true"
+  root_block_device.0.encrypted:                 "" => "<computed>"
+  root_block_device.0.iops:                      "" => "1000"
+  root_block_device.0.kms_key_id:                "" => "<computed>"
+  root_block_device.0.volume_id:                 "" => "<computed>"
+  root_block_device.0.volume_size:               "" => "80"
+  root_block_device.0.volume_type:               "" => "io1"
+  security_groups.#:                             "" => "<computed>"
+  source_dest_check:                             "" => "false"
+  subnet_id:                                     "" => "subnet-0841f1aab40543032"
+  tags.%:                                        "" => "8"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-control-plane-1"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/nodeRoles:                         "" => "control_plane"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.owner:                                    "" => "StudentWorkshop"
+  tenancy:                                       "" => "<computed>"
+  volume_tags.%:                                 "" => "5"
+  volume_tags.expiration:                        "" => "8h"
+  volume_tags.konvoy/clusterName:                "" => "d2iq-workshop-fa75"
+  volume_tags.konvoy/nodeRoles:                  "" => "control_plane"
+  volume_tags.konvoy/version:                    "" => "v1.4.0"
+  volume_tags.owner:                             "" => "StudentWorkshop"
+  vpc_security_group_ids.#:                      "" => "3"
+  vpc_security_group_ids.2027257964:             "" => "sg-0da4297ce109e6768"
+  vpc_security_group_ids.2192947863:             "" => "sg-02be8edb2aa4e5ac8"
+  vpc_security_group_ids.2754662363:             "" => "sg-084e5ab3a03919e78"[0m
+[0m[1maws_instance.worker_pool0[0]: Creating...[0m
+  ami:                                           "" => "ami-02eac2c0129f6376b"
+  arn:                                           "" => "<computed>"
+  associate_public_ip_address:                   "" => "true"
+  availability_zone:                             "" => "us-east-1a"
+  cpu_core_count:                                "" => "<computed>"
+  cpu_threads_per_core:                          "" => "<computed>"
+  ebs_block_device.#:                            "" => "<computed>"
+  ephemeral_block_device.#:                      "" => "<computed>"
+  get_password_data:                             "" => "false"
+  host_id:                                       "" => "<computed>"
+  iam_instance_profile:                          "" => "d2iq-workshop-fa75-node-profile"
+  instance_state:                                "" => "<computed>"
+  instance_type:                                 "" => "m5.2xlarge"
+  ipv6_address_count:                            "" => "<computed>"
+  ipv6_addresses.#:                              "" => "<computed>"
+  key_name:                                      "" => "d2iq-workshop-fa75"
+  network_interface.#:                           "" => "<computed>"
+  network_interface_id:                          "" => "<computed>"
+  password_data:                                 "" => "<computed>"
+  placement_group:                               "" => "<computed>"
+  primary_network_interface_id:                  "" => "<computed>"
+  private_dns:                                   "" => "<computed>"
+  private_ip:                                    "" => "<computed>"
+  public_dns:                                    "" => "<computed>"
+  public_ip:                                     "" => "<computed>"
+  root_block_device.#:                           "" => "1"
+  root_block_device.0.delete_on_termination:     "" => "true"
+  root_block_device.0.encrypted:                 "" => "<computed>"
+  root_block_device.0.kms_key_id:                "" => "<computed>"
+  root_block_device.0.volume_id:                 "" => "<computed>"
+  root_block_device.0.volume_size:               "" => "80"
+  root_block_device.0.volume_type:               "" => "gp2"
+  security_groups.#:                             "" => "<computed>"
+  source_dest_check:                             "" => "false"
+  subnet_id:                                     "" => "subnet-0175184cc99375bae"
+  tags.%:                                        "" => "8"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-worker-0"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/nodeRoles:                         "" => "worker"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.owner:                                    "" => "StudentWorkshop"
+  tenancy:                                       "" => "<computed>"
+  volume_tags.%:                                 "" => "5"
+  volume_tags.expiration:                        "" => "8h"
+  volume_tags.konvoy/clusterName:                "" => "d2iq-workshop-fa75"
+  volume_tags.konvoy/nodeRoles:                  "" => "worker"
+  volume_tags.konvoy/version:                    "" => "v1.4.0"
+  volume_tags.owner:                             "" => "StudentWorkshop"
+  vpc_security_group_ids.#:                      "" => "3"
+  vpc_security_group_ids.2027257964:             "" => "sg-0da4297ce109e6768"
+  vpc_security_group_ids.2192947863:             "" => "sg-02be8edb2aa4e5ac8"
+  vpc_security_group_ids.2754662363:             "" => "sg-084e5ab3a03919e78"[0m
+[0m[1maws_vpc_endpoint.ec2: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.elasticloadbalancing: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_instance.worker_pool0.1: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_instance.control_plane.0: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_instance.control_plane.1: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_instance.control_plane.2: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_instance.worker_pool0.0: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_instance.worker_pool0[1]: Creation complete after 14s (ID: i-05332c852ead24d1b)[0m[0m
+[0m[1maws_instance.worker_pool0[3]: Creating...[0m
+  ami:                                           "" => "ami-02eac2c0129f6376b"
+  arn:                                           "" => "<computed>"
+  associate_public_ip_address:                   "" => "true"
+  availability_zone:                             "" => "us-east-1d"
+  cpu_core_count:                                "" => "<computed>"
+  cpu_threads_per_core:                          "" => "<computed>"
+  ebs_block_device.#:                            "" => "<computed>"
+  ephemeral_block_device.#:                      "" => "<computed>"
+  get_password_data:                             "" => "false"
+  host_id:                                       "" => "<computed>"
+  iam_instance_profile:                          "" => "d2iq-workshop-fa75-node-profile"
+  instance_state:                                "" => "<computed>"
+  instance_type:                                 "" => "m5.2xlarge"
+  ipv6_address_count:                            "" => "<computed>"
+  ipv6_addresses.#:                              "" => "<computed>"
+  key_name:                                      "" => "d2iq-workshop-fa75"
+  network_interface.#:                           "" => "<computed>"
+  network_interface_id:                          "" => "<computed>"
+  password_data:                                 "" => "<computed>"
+  placement_group:                               "" => "<computed>"
+  primary_network_interface_id:                  "" => "<computed>"
+  private_dns:                                   "" => "<computed>"
+  private_ip:                                    "" => "<computed>"
+  public_dns:                                    "" => "<computed>"
+  public_ip:                                     "" => "<computed>"
+  root_block_device.#:                           "" => "1"
+  root_block_device.0.delete_on_termination:     "" => "true"
+  root_block_device.0.encrypted:                 "" => "<computed>"
+  root_block_device.0.kms_key_id:                "" => "<computed>"
+  root_block_device.0.volume_id:                 "" => "<computed>"
+  root_block_device.0.volume_size:               "" => "80"
+  root_block_device.0.volume_type:               "" => "gp2"
+  security_groups.#:                             "" => "<computed>"
+  source_dest_check:                             "" => "false"
+  subnet_id:                                     "" => "subnet-087ed3d6572443236"
+  tags.%:                                        "" => "8"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-worker-3"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/nodeRoles:                         "" => "worker"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.owner:                                    "" => "StudentWorkshop"
+  tenancy:                                       "" => "<computed>"
+  volume_tags.%:                                 "" => "5"
+  volume_tags.expiration:                        "" => "8h"
+  volume_tags.konvoy/clusterName:                "" => "d2iq-workshop-fa75"
+  volume_tags.konvoy/nodeRoles:                  "" => "worker"
+  volume_tags.konvoy/version:                    "" => "v1.4.0"
+  volume_tags.owner:                             "" => "StudentWorkshop"
+  vpc_security_group_ids.#:                      "" => "3"
+  vpc_security_group_ids.2027257964:             "" => "sg-0da4297ce109e6768"
+  vpc_security_group_ids.2192947863:             "" => "sg-02be8edb2aa4e5ac8"
+  vpc_security_group_ids.2754662363:             "" => "sg-084e5ab3a03919e78"[0m
+[0m[1maws_instance.worker_pool0[0]: Creation complete after 17s (ID: i-04daa821cdd6b5287)[0m[0m
+[0m[1maws_instance.worker_pool0[2]: Creating...[0m
+  ami:                                           "" => "ami-02eac2c0129f6376b"
+  arn:                                           "" => "<computed>"
+  associate_public_ip_address:                   "" => "true"
+  availability_zone:                             "" => "us-east-1c"
+  cpu_core_count:                                "" => "<computed>"
+  cpu_threads_per_core:                          "" => "<computed>"
+  ebs_block_device.#:                            "" => "<computed>"
+  ephemeral_block_device.#:                      "" => "<computed>"
+  get_password_data:                             "" => "false"
+  host_id:                                       "" => "<computed>"
+  iam_instance_profile:                          "" => "d2iq-workshop-fa75-node-profile"
+  instance_state:                                "" => "<computed>"
+  instance_type:                                 "" => "m5.2xlarge"
+  ipv6_address_count:                            "" => "<computed>"
+  ipv6_addresses.#:                              "" => "<computed>"
+  key_name:                                      "" => "d2iq-workshop-fa75"
+  network_interface.#:                           "" => "<computed>"
+  network_interface_id:                          "" => "<computed>"
+  password_data:                                 "" => "<computed>"
+  placement_group:                               "" => "<computed>"
+  primary_network_interface_id:                  "" => "<computed>"
+  private_dns:                                   "" => "<computed>"
+  private_ip:                                    "" => "<computed>"
+  public_dns:                                    "" => "<computed>"
+  public_ip:                                     "" => "<computed>"
+  root_block_device.#:                           "" => "1"
+  root_block_device.0.delete_on_termination:     "" => "true"
+  root_block_device.0.encrypted:                 "" => "<computed>"
+  root_block_device.0.kms_key_id:                "" => "<computed>"
+  root_block_device.0.volume_id:                 "" => "<computed>"
+  root_block_device.0.volume_size:               "" => "80"
+  root_block_device.0.volume_type:               "" => "gp2"
+  security_groups.#:                             "" => "<computed>"
+  source_dest_check:                             "" => "false"
+  subnet_id:                                     "" => "subnet-0a29a1cdc1191c01d"
+  tags.%:                                        "" => "8"
+  tags.Name:                                     "" => "d2iq-workshop-fa75-worker-2"
+  tags.expiration:                               "" => "8h"
+  tags.konvoy/clusterName:                       "" => "d2iq-workshop-fa75"
+  tags.konvoy/nodeRoles:                         "" => "worker"
+  tags.konvoy/version:                           "" => "v1.4.0"
+  tags.kubernetes.io/cluster:                    "" => "d2iq-workshop-fa75"
+  tags.kubernetes.io/cluster/d2iq-workshop-fa75: "" => "owned"
+  tags.owner:                                    "" => "StudentWorkshop"
+  tenancy:                                       "" => "<computed>"
+  volume_tags.%:                                 "" => "5"
+  volume_tags.expiration:                        "" => "8h"
+  volume_tags.konvoy/clusterName:                "" => "d2iq-workshop-fa75"
+  volume_tags.konvoy/nodeRoles:                  "" => "worker"
+  volume_tags.konvoy/version:                    "" => "v1.4.0"
+  volume_tags.owner:                             "" => "StudentWorkshop"
+  vpc_security_group_ids.#:                      "" => "3"
+  vpc_security_group_ids.2027257964:             "" => "sg-0da4297ce109e6768"
+  vpc_security_group_ids.2192947863:             "" => "sg-02be8edb2aa4e5ac8"
+  vpc_security_group_ids.2754662363:             "" => "sg-084e5ab3a03919e78"[0m
+[0m[1maws_instance.control_plane[0]: Creation complete after 17s (ID: i-09a8675cd161b5323)[0m[0m
+[0m[1maws_instance.control_plane[2]: Creation complete after 17s (ID: i-0d16a35f9c0d3827b)[0m[0m
+[0m[1maws_instance.control_plane[1]: Creation complete after 17s (ID: i-0724ef503d6ade561)[0m[0m
+[0m[1maws_ebs_volume.control_plane_imagefs[1]: Creating...[0m
+  arn:                     "" => "<computed>"
+  availability_zone:       "" => "us-east-1b"
+  encrypted:               "" => "<computed>"
+  iops:                    "" => "<computed>"
+  kms_key_id:              "" => "<computed>"
+  size:                    "" => "160"
+  snapshot_id:             "" => "<computed>"
+  tags.%:                  "" => "6"
+  tags.Name:               "" => "d2iq-workshop-fa75-control-plane-volume-imagefs-1"
+  tags.expiration:         "" => "8h"
+  tags.konvoy/clusterName: "" => "d2iq-workshop-fa75"
+  tags.konvoy/nodeRoles:   "" => "control_plane"
+  tags.konvoy/version:     "" => "v1.4.0"
+  tags.owner:              "" => "StudentWorkshop"
+  type:                    "" => "gp2"[0m
+[0m[1maws_elb.konvoy_control_plane: Creating...[0m
+  arn:                                    "" => "<computed>"
+  availability_zones.#:                   "" => "<computed>"
+  connection_draining:                    "" => "true"
+  connection_draining_timeout:            "" => "300"
+  cross_zone_load_balancing:              "" => "true"
+  dns_name:                               "" => "<computed>"
+  health_check.#:                         "" => "1"
+  health_check.0.healthy_threshold:       "" => "2"
+  health_check.0.interval:                "" => "10"
+  health_check.0.target:                  "" => "TCP:6443"
+  health_check.0.timeout:                 "" => "3"
+  health_check.0.unhealthy_threshold:     "" => "2"
+  idle_timeout:                           "" => "3600"
+  instances.#:                            "" => "3"
+  instances.264678665:                    "" => "i-09a8675cd161b5323"
+  instances.372363041:                    "" => "i-0724ef503d6ade561"
+  instances.642541766:                    "" => "i-0d16a35f9c0d3827b"
+  internal:                               "" => "false"
+  listener.#:                             "" => "1"
+  listener.3838681924.instance_port:      "" => "6443"
+  listener.3838681924.instance_protocol:  "" => "tcp"
+  listener.3838681924.lb_port:            "" => "6443"
+  listener.3838681924.lb_protocol:        "" => "tcp"
+  listener.3838681924.ssl_certificate_id: "" => ""
+  name:                                   "" => "d2iq-workshop-fa75-lb-control"
+  security_groups.#:                      "" => "2"
+  security_groups.2099890660:             "" => "sg-0e5cd26d88d738211"
+  security_groups.2192947863:             "" => "sg-02be8edb2aa4e5ac8"
+  source_security_group:                  "" => "<computed>"
+  source_security_group_id:               "" => "<computed>"
+  subnets.#:                              "" => "5"
+  subnets.2081842169:                     "" => "subnet-057dbc5e08ea13bea"
+  subnets.3162246257:                     "" => "subnet-02790a1cfc8b721a9"
+  subnets.3617676313:                     "" => "subnet-0c84058aedc970023"
+  subnets.3678760451:                     "" => "subnet-02b21e1d0e4242d39"
+  subnets.85434466:                       "" => "subnet-003842648d38ec57d"
+  tags.%:                                 "" => "6"
+  tags.Name:                              "" => "d2iq-workshop-fa75-lb-control-plane"
+  tags.expiration:                        "" => "8h"
+  tags.konvoy/clusterName:                "" => "d2iq-workshop-fa75"
+  tags.konvoy/loadBalancer:               "" => "control_plane"
+  tags.konvoy/version:                    "" => "v1.4.0"
+  tags.owner:                             "" => "StudentWorkshop"
+  zone_id:                                "" => "<computed>"[0m
+[0m[1maws_ebs_volume.control_plane_imagefs[0]: Creating...[0m
+  arn:                     "" => "<computed>"
+  availability_zone:       "" => "us-east-1a"
+  encrypted:               "" => "<computed>"
+  iops:                    "" => "<computed>"
+  kms_key_id:              "" => "<computed>"
+  size:                    "" => "160"
+  snapshot_id:             "" => "<computed>"
+  tags.%:                  "" => "6"
+  tags.Name:               "" => "d2iq-workshop-fa75-control-plane-volume-imagefs-0"
+  tags.expiration:         "" => "8h"
+  tags.konvoy/clusterName: "" => "d2iq-workshop-fa75"
+  tags.konvoy/nodeRoles:   "" => "control_plane"
+  tags.konvoy/version:     "" => "v1.4.0"
+  tags.owner:              "" => "StudentWorkshop"
+  type:                    "" => "gp2"[0m
+[0m[1maws_elb.konvoy_control_plane: Creation complete after 2s (ID: d2iq-workshop-fa75-lb-control)[0m[0m
+[0m[1maws_ebs_volume.control_plane_imagefs[2]: Creating...[0m
+  arn:                     "" => "<computed>"
+  availability_zone:       "" => "us-east-1c"
+  encrypted:               "" => "<computed>"
+  iops:                    "" => "<computed>"
+  kms_key_id:              "" => "<computed>"
+  size:                    "" => "160"
+  snapshot_id:             "" => "<computed>"
+  tags.%:                  "" => "6"
+  tags.Name:               "" => "d2iq-workshop-fa75-control-plane-volume-imagefs-2"
+  tags.expiration:         "" => "8h"
+  tags.konvoy/clusterName: "" => "d2iq-workshop-fa75"
+  tags.konvoy/nodeRoles:   "" => "control_plane"
+  tags.konvoy/version:     "" => "v1.4.0"
+  tags.owner:              "" => "StudentWorkshop"
+  type:                    "" => "gp2"[0m
+[0m[1maws_vpc_endpoint.ec2: Still creating... (20s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.elasticloadbalancing: Still creating... (20s elapsed)[0m[0m
+[0m[1maws_instance.worker_pool0.3: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_instance.worker_pool0[3]: Creation complete after 13s (ID: i-0d97414e59ff6ac03)[0m[0m
+[0m[1maws_instance.worker_pool0.2: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_ebs_volume.control_plane_imagefs.1: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_ebs_volume.control_plane_imagefs.0: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_ebs_volume.control_plane_imagefs[0]: Creation complete after 11s (ID: vol-093917f024d8fcc30)[0m[0m
+[0m[1maws_ebs_volume.control_plane_imagefs[1]: Creation complete after 11s (ID: vol-06943df535ae9bcfd)[0m[0m
+[0m[1maws_ebs_volume.control_plane_imagefs.2: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.ec2: Still creating... (30s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.elasticloadbalancing: Still creating... (30s elapsed)[0m[0m
+[0m[1maws_ebs_volume.control_plane_imagefs[2]: Creation complete after 11s (ID: vol-02c1f93f89247e40d)[0m[0m
+[0m[1maws_volume_attachment.control_plane_imagefs[0]: Creating...[0m
+  device_name:  "" => "/dev/xvdb"
+  force_detach: "" => "true"
+  instance_id:  "" => "i-09a8675cd161b5323"
+  volume_id:    "" => "vol-093917f024d8fcc30"[0m
+[0m[1maws_volume_attachment.control_plane_imagefs[1]: Creating...[0m
+  device_name:  "" => "/dev/xvdb"
+  force_detach: "" => "true"
+  instance_id:  "" => "i-0724ef503d6ade561"
+  volume_id:    "" => "vol-06943df535ae9bcfd"[0m
+[0m[1maws_volume_attachment.control_plane_imagefs[2]: Creating...[0m
+  device_name:  "" => "/dev/xvdb"
+  force_detach: "" => "true"
+  instance_id:  "" => "i-0d16a35f9c0d3827b"
+  volume_id:    "" => "vol-02c1f93f89247e40d"[0m
+[0m[1maws_instance.worker_pool0[2]: Creation complete after 13s (ID: i-085880afc0f947339)[0m[0m
+[0m[1maws_ebs_volume.worker_pool0_imagefs[2]: Creating...[0m
+  arn:                     "" => "<computed>"
+  availability_zone:       "" => "us-east-1c"
+  encrypted:               "" => "<computed>"
+  iops:                    "" => "<computed>"
+  kms_key_id:              "" => "<computed>"
+  size:                    "" => "160"
+  snapshot_id:             "" => "<computed>"
+  tags.%:                  "" => "6"
+  tags.Name:               "" => "d2iq-workshop-fa75-worker-pool-0-volume-imagefs-2"
+  tags.expiration:         "" => "8h"
+  tags.konvoy/clusterName: "" => "d2iq-workshop-fa75"
+  tags.konvoy/nodeRoles:   "" => "worker"
+  tags.konvoy/version:     "" => "v1.4.0"
+  tags.owner:              "" => "StudentWorkshop"
+  type:                    "" => "gp2"[0m
+[0m[1maws_ebs_volume.worker_pool0_imagefs[3]: Creating...[0m
+  arn:                     "" => "<computed>"
+  availability_zone:       "" => "us-east-1d"
+  encrypted:               "" => "<computed>"
+  iops:                    "" => "<computed>"
+  kms_key_id:              "" => "<computed>"
+  size:                    "" => "160"
+  snapshot_id:             "" => "<computed>"
+  tags.%:                  "" => "6"
+  tags.Name:               "" => "d2iq-workshop-fa75-worker-pool-0-volume-imagefs-3"
+  tags.expiration:         "" => "8h"
+  tags.konvoy/clusterName: "" => "d2iq-workshop-fa75"
+  tags.konvoy/nodeRoles:   "" => "worker"
+  tags.konvoy/version:     "" => "v1.4.0"
+  tags.owner:              "" => "StudentWorkshop"
+  type:                    "" => "gp2"[0m
+[0m[1maws_vpc_endpoint.elasticloadbalancing: Still creating... (40s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.ec2: Still creating... (40s elapsed)[0m[0m
+[0m[1maws_volume_attachment.control_plane_imagefs.0: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_volume_attachment.control_plane_imagefs.1: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_volume_attachment.control_plane_imagefs.2: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_ebs_volume.worker_pool0_imagefs.3: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_ebs_volume.worker_pool0_imagefs.2: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_ebs_volume.worker_pool0_imagefs[3]: Creation complete after 11s (ID: vol-0ea6c43be99fb0631)[0m[0m
+[0m[1mlocal_file.ansible_inventory: Creating...[0m
+  content:              "" => "all:\n  vars:\n    version: \"v1beta1\"\n    order: sorted\n    control_plane_endpoint: \"d2iq-workshop-fa75-lb-control-1759962681.us-east-1.elb.amazonaws.com:6443\"\n    ansible_user: \"centos\"\n    ansible_port: 22\n    ansible_ssh_private_key_file: \"/tmp/konvoy/lab/d2iq-workshop-ssh.pem\"\n\ncontrol-plane:\n  hosts:\n    10.0.193.240:\n      ansible_host: ec2-54-225-60-39.compute-1.amazonaws.com\n      node_pool: control-plane\n    10.0.198.182:\n      ansible_host: ec2-34-234-223-36.compute-1.amazonaws.com\n      node_pool: control-plane\n    10.0.202.203:\n      ansible_host: ec2-3-88-203-216.compute-1.amazonaws.com\n      node_pool: control-plane\n\nnode:\n  hosts:\n    10.0.128.115:\n      ansible_host: ec2-54-211-252-149.compute-1.amazonaws.com\n      node_pool: worker\n    10.0.134.193:\n      ansible_host: ec2-35-170-66-220.compute-1.amazonaws.com\n      node_pool: worker\n    10.0.136.223:\n      ansible_host: ec2-3-84-2-141.compute-1.amazonaws.com\n      node_pool: worker\n    10.0.142.250:\n      ansible_host: ec2-3-88-212-5.compute-1.amazonaws.com\n      node_pool: worker\n\nbastion:\n\n\n"
+  directory_permission: "" => "0777"
+  file_permission:      "" => "0777"
+  filename:             "" => "/tmp/konvoy/lab/inventory.yaml"[0m
+[0m[1mlocal_file.ansible_inventory: Provisioning with 'local-exec'...[0m[0m
+[0m[0mlocal_file.ansible_inventory (local-exec): Executing: ["/bin/sh" "-c" "chmod 644 /tmp/konvoy/lab/inventory.yaml"]
+[0m[1mlocal_file.ansible_inventory: Creation complete after 0s (ID: 8b9728c03664ddd2d81847bb9629d8bb40ee189a)[0m[0m
+[0m[1maws_ebs_volume.worker_pool0_imagefs[2]: Creation complete after 11s (ID: vol-03557a68cde40422f)[0m[0m
+[0m[1maws_ebs_volume.worker_pool0_imagefs[1]: Creating...[0m
+  arn:                     "" => "<computed>"
+  availability_zone:       "" => "us-east-1b"
+  encrypted:               "" => "<computed>"
+  iops:                    "" => "<computed>"
+  kms_key_id:              "" => "<computed>"
+  size:                    "" => "160"
+  snapshot_id:             "" => "<computed>"
+  tags.%:                  "" => "6"
+  tags.Name:               "" => "d2iq-workshop-fa75-worker-pool-0-volume-imagefs-1"
+  tags.expiration:         "" => "8h"
+  tags.konvoy/clusterName: "" => "d2iq-workshop-fa75"
+  tags.konvoy/nodeRoles:   "" => "worker"
+  tags.konvoy/version:     "" => "v1.4.0"
+  tags.owner:              "" => "StudentWorkshop"
+  type:                    "" => "gp2"[0m
+[0m[1maws_ebs_volume.worker_pool0_imagefs[0]: Creating...[0m
+  arn:                     "" => "<computed>"
+  availability_zone:       "" => "us-east-1a"
+  encrypted:               "" => "<computed>"
+  iops:                    "" => "<computed>"
+  kms_key_id:              "" => "<computed>"
+  size:                    "" => "160"
+  snapshot_id:             "" => "<computed>"
+  tags.%:                  "" => "6"
+  tags.Name:               "" => "d2iq-workshop-fa75-worker-pool-0-volume-imagefs-0"
+  tags.expiration:         "" => "8h"
+  tags.konvoy/clusterName: "" => "d2iq-workshop-fa75"
+  tags.konvoy/nodeRoles:   "" => "worker"
+  tags.konvoy/version:     "" => "v1.4.0"
+  tags.owner:              "" => "StudentWorkshop"
+  type:                    "" => "gp2"[0m
+[0m[1maws_vpc_endpoint.ec2: Still creating... (50s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.elasticloadbalancing: Still creating... (50s elapsed)[0m[0m
+[0m[1maws_volume_attachment.control_plane_imagefs.1: Still creating... (20s elapsed)[0m[0m
+[0m[1maws_volume_attachment.control_plane_imagefs.0: Still creating... (20s elapsed)[0m[0m
+[0m[1maws_volume_attachment.control_plane_imagefs.2: Still creating... (20s elapsed)[0m[0m
+[0m[1maws_ebs_volume.worker_pool0_imagefs.1: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_ebs_volume.worker_pool0_imagefs.0: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_volume_attachment.control_plane_imagefs[0]: Creation complete after 21s (ID: vai-3255789777)[0m[0m
+[0m[1maws_volume_attachment.control_plane_imagefs[1]: Creation complete after 21s (ID: vai-2872356438)[0m[0m
+[0m[1maws_volume_attachment.control_plane_imagefs[2]: Creation complete after 21s (ID: vai-726317746)[0m[0m
+[0m[1maws_ebs_volume.worker_pool0_imagefs[1]: Creation complete after 10s (ID: vol-0b42ae574ca96555a)[0m[0m
+[0m[1maws_ebs_volume.worker_pool0_imagefs[0]: Creation complete after 10s (ID: vol-0959be38f68767727)[0m[0m
+[0m[1maws_volume_attachment.worker_pool0_imagefs[3]: Creating...[0m
+  device_name:  "" => "/dev/xvdb"
+  force_detach: "" => "true"
+  instance_id:  "" => "i-0d97414e59ff6ac03"
+  volume_id:    "" => "vol-0ea6c43be99fb0631"[0m
+[0m[1maws_volume_attachment.worker_pool0_imagefs[0]: Creating...[0m
+  device_name:  "" => "/dev/xvdb"
+  force_detach: "" => "true"
+  instance_id:  "" => "i-04daa821cdd6b5287"
+  volume_id:    "" => "vol-0959be38f68767727"[0m
+[0m[1maws_volume_attachment.worker_pool0_imagefs[2]: Creating...[0m
+  device_name:  "" => "/dev/xvdb"
+  force_detach: "" => "true"
+  instance_id:  "" => "i-085880afc0f947339"
+  volume_id:    "" => "vol-03557a68cde40422f"[0m
+[0m[1maws_volume_attachment.worker_pool0_imagefs[1]: Creating...[0m
+  device_name:  "" => "/dev/xvdb"
+  force_detach: "" => "true"
+  instance_id:  "" => "i-05332c852ead24d1b"
+  volume_id:    "" => "vol-0b42ae574ca96555a"[0m
+[0m[1maws_vpc_endpoint.ec2: Still creating... (1m0s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.elasticloadbalancing: Still creating... (1m0s elapsed)[0m[0m
+[0m[1maws_volume_attachment.worker_pool0_imagefs.2: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_volume_attachment.worker_pool0_imagefs.3: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_volume_attachment.worker_pool0_imagefs.0: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_volume_attachment.worker_pool0_imagefs.1: Still creating... (10s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.ec2: Still creating... (1m10s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.elasticloadbalancing: Still creating... (1m10s elapsed)[0m[0m
+[0m[1maws_volume_attachment.worker_pool0_imagefs.2: Still creating... (20s elapsed)[0m[0m
+[0m[1maws_volume_attachment.worker_pool0_imagefs.3: Still creating... (20s elapsed)[0m[0m
+[0m[1maws_volume_attachment.worker_pool0_imagefs.0: Still creating... (20s elapsed)[0m[0m
+[0m[1maws_volume_attachment.worker_pool0_imagefs.1: Still creating... (20s elapsed)[0m[0m
+[0m[1maws_volume_attachment.worker_pool0_imagefs[3]: Creation complete after 21s (ID: vai-3448418783)[0m[0m
+[0m[1maws_volume_attachment.worker_pool0_imagefs[2]: Creation complete after 21s (ID: vai-3451228981)[0m[0m
+[0m[1maws_volume_attachment.worker_pool0_imagefs[0]: Creation complete after 21s (ID: vai-1893147081)[0m[0m
+[0m[1maws_volume_attachment.worker_pool0_imagefs[1]: Creation complete after 21s (ID: vai-3356788653)[0m[0m
+[0m[1maws_vpc_endpoint.ec2: Still creating... (1m20s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.elasticloadbalancing: Still creating... (1m20s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.ec2: Still creating... (1m30s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.elasticloadbalancing: Still creating... (1m30s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.ec2: Still creating... (1m40s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.elasticloadbalancing: Still creating... (1m40s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.elasticloadbalancing: Creation complete after 1m44s (ID: vpce-07ed0b8c27918c6c8)[0m[0m
+[0m[1maws_vpc_endpoint.ec2: Still creating... (1m50s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.ec2: Still creating... (2m0s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.ec2: Still creating... (2m10s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.ec2: Still creating... (2m20s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.ec2: Still creating... (2m30s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.ec2: Still creating... (2m40s elapsed)[0m[0m
+[0m[1maws_vpc_endpoint.ec2: Creation complete after 2m43s (ID: vpce-01d0c6d95133ca4bd)[0m[0m
+[0m[1m[32m
+Apply complete! Resources: 53 added, 0 changed, 0 destroyed.[0m
+[0m[1m[32m
+Outputs:
+
+cluster_name = d2iq-workshop-fa75
+vpc_id = vpc-02bc3ded61ec19930[0m

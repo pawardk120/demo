@@ -1,0 +1,175 @@
+To run the Ansible command, you can run:
+export PYTHONPATH=/opt/konvoy/ansible/lib/python3.7/site-packages
+export ANSIBLE_CONFIG=/opt/konvoy/ansible/playbooks/ansible.cfg
+/opt/konvoy/ansible/bin/ansible-playbook /opt/konvoy/ansible/playbooks/preflights-basic.yaml -i inventory.yaml --extra-vars {"working_directory":"/tmp/konvoy/lab","rpms_tar_file":"","debs_tar_file":"","certificate_key":"866e10508878da8a208ab1fd990e03c727ea2dae429942611e00c0249f131c21","encryption_token":"1da0Gg2NEoylnk/X+7u6ddzdkwLy62r7zADq0bqtzns=","keepalived_vrid":43,"node_imagefs_volume_devices":{"control-plane":"xvdb","worker":"xvdb"},"node_labels":{},"node_taints":{},"node_nvidia_gpu":{"worker":false},"provisioner":"aws","image_registries_with_auth":[],"default_image_registry":"","default_image_registry_mirrors":{}} --extra-vars @/tmp/konvoy/lab/runs/Running Preflights/2020-07-08-03-22-10/cluster.yaml
+
+Complete environment:
+PATH=/opt/konvoy/ansible/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=ip-172-31-39-232.ec2.internal
+TERM=xterm
+KUBECONFIG=/home/centos/.kube/config
+KONVOY_EXECUTABLE_DIR=/opt/konvoy/artifacts
+KONVOY_COMMAND_ARG=konvoy
+KONVOY_USER_OS=linux
+PROVIDERS_PATH=/opt/konvoy/providers
+TERRAFORM_PLUGINS_PATH=/opt/konvoy/providers/.terraform/plugins-cache
+ANSIBLE_PATH=/opt/konvoy/ansible
+HOME=/home/centos
+PYTHONPATH=/opt/konvoy/ansible/lib/python3.7/site-packages
+ANSIBLE_CONFIG=/opt/konvoy/ansible/playbooks/ansible.cfg
+ANSIBLE_FORCE_COLOR=true
+
+PLAY [Configure Cluster Prerequisites on Bastion Nodes] ******************************************************************************************************
+[0;36mskipping: no hosts matched[0m
+
+PLAY [Configure Cluster Prerequisites] ***********************************************************************************************************************
+
+TASK [prereqs : wait 180 seconds for SSH target connection to become reachable (socket)] *********************************************************************
+[0;32mok: [10.0.128.115 -> localhost][0m
+[0;32mok: [10.0.193.240 -> localhost][0m
+[0;32mok: [10.0.134.193 -> localhost][0m
+[0;32mok: [10.0.136.223 -> localhost][0m
+[0;32mok: [10.0.142.250 -> localhost][0m
+[0;32mok: [10.0.198.182 -> localhost][0m
+[0;32mok: [10.0.202.203 -> localhost][0m
+
+TASK [prereqs : wait 180 seconds for SSH target connection to become reachable (SSH)] ************************************************************************
+[0;36mskipping: [10.0.128.115][0m
+[0;36mskipping: [10.0.134.193][0m
+[0;36mskipping: [10.0.142.250][0m
+[0;36mskipping: [10.0.202.203][0m
+[0;36mskipping: [10.0.136.223][0m
+[0;36mskipping: [10.0.193.240][0m
+[0;36mskipping: [10.0.198.182][0m
+
+TASK [prereqs : install python 2.7] **************************************************************************************************************************
+[0;32mok: [10.0.198.182][0m
+[0;32mok: [10.0.193.240][0m
+[0;32mok: [10.0.202.203][0m
+[0;32mok: [10.0.136.223][0m
+[0;32mok: [10.0.142.250][0m
+[0;32mok: [10.0.128.115][0m
+[0;32mok: [10.0.134.193][0m
+
+TASK [prereqs : detect SSH pipelining support] ***************************************************************************************************************
+[0;32mok: [10.0.128.115][0m
+[0;32mok: [10.0.142.250][0m
+[0;32mok: [10.0.198.182][0m
+[0;32mok: [10.0.134.193][0m
+[0;32mok: [10.0.202.203][0m
+[0;32mok: [10.0.193.240][0m
+[0;32mok: [10.0.136.223][0m
+
+TASK [prereqs : enable SSH pipelining] ***********************************************************************************************************************
+[0;32mok: [10.0.128.115][0m
+[0;32mok: [10.0.136.223][0m
+[0;32mok: [10.0.134.193][0m
+[0;32mok: [10.0.198.182][0m
+[0;32mok: [10.0.142.250][0m
+[0;32mok: [10.0.193.240][0m
+[0;32mok: [10.0.202.203][0m
+
+TASK [prereqs : create /root/.ansible/tmp directory] *********************************************************************************************************
+[0;33mchanged: [10.0.134.193][0m
+[0;33mchanged: [10.0.193.240][0m
+[0;33mchanged: [10.0.202.203][0m
+[0;33mchanged: [10.0.136.223][0m
+[0;33mchanged: [10.0.198.182][0m
+[0;33mchanged: [10.0.142.250][0m
+[0;33mchanged: [10.0.128.115][0m
+
+TASK [disable-swap : remove swapfile from /etc/fstab] ********************************************************************************************************
+[0;32mok: [10.0.128.115] => (item=swap)[0m
+[0;32mok: [10.0.134.193] => (item=swap)[0m
+[0;32mok: [10.0.136.223] => (item=swap)[0m
+[0;32mok: [10.0.198.182] => (item=swap)[0m
+[0;32mok: [10.0.142.250] => (item=swap)[0m
+[0;32mok: [10.0.193.240] => (item=swap)[0m
+[0;32mok: [10.0.202.203] => (item=swap)[0m
+[0;32mok: [10.0.128.115] => (item=none)[0m
+[0;32mok: [10.0.134.193] => (item=none)[0m
+[0;32mok: [10.0.142.250] => (item=none)[0m
+[0;32mok: [10.0.193.240] => (item=none)[0m
+[0;32mok: [10.0.136.223] => (item=none)[0m
+[0;32mok: [10.0.198.182] => (item=none)[0m
+[0;32mok: [10.0.202.203] => (item=none)[0m
+
+TASK [disable-swap : check swap] *****************************************************************************************************************************
+[0;32mok: [10.0.128.115][0m
+[0;32mok: [10.0.142.250][0m
+[0;32mok: [10.0.134.193][0m
+[0;32mok: [10.0.193.240][0m
+[0;32mok: [10.0.198.182][0m
+[0;32mok: [10.0.136.223][0m
+[0;32mok: [10.0.202.203][0m
+
+TASK [disable-swap : disable swap] ***************************************************************************************************************************
+[0;36mskipping: [10.0.128.115][0m
+[0;36mskipping: [10.0.136.223][0m
+[0;36mskipping: [10.0.134.193][0m
+[0;36mskipping: [10.0.142.250][0m
+[0;36mskipping: [10.0.202.203][0m
+[0;36mskipping: [10.0.193.240][0m
+[0;36mskipping: [10.0.198.182][0m
+
+PLAY [Gather Node Facts] *************************************************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************************************
+[0;32mok: [10.0.193.240][0m
+[0;32mok: [10.0.202.203][0m
+[0;32mok: [10.0.128.115][0m
+[0;32mok: [10.0.136.223][0m
+[0;32mok: [10.0.142.250][0m
+[0;32mok: [10.0.198.182][0m
+[0;32mok: [10.0.134.193][0m
+
+PLAY [Check tasks specific to the container networking] ******************************************************************************************************
+
+TASK [include_tasks] *****************************************************************************************************************************************
+[0;36mincluded: /opt/konvoy/ansible/playbooks/roles/container-networking/tasks/preflights.yml for 10.0.128.115, 10.0.134.193, 10.0.136.223, 10.0.142.250, 10.0.193.240, 10.0.198.182, 10.0.202.203[0m
+
+TASK [Include vars of main.yml] ******************************************************************************************************************************
+[0;32mok: [10.0.128.115][0m
+[0;32mok: [10.0.134.193][0m
+[0;32mok: [10.0.136.223][0m
+[0;32mok: [10.0.142.250][0m
+[0;32mok: [10.0.193.240][0m
+[0;32mok: [10.0.198.182][0m
+[0;32mok: [10.0.202.203][0m
+
+TASK [check if BGP route reflectors are configured] **********************************************************************************************************
+[0;36mskipping: [10.0.128.115][0m
+[0;36mskipping: [10.0.134.193][0m
+[0;36mskipping: [10.0.136.223][0m
+[0;36mskipping: [10.0.142.250][0m
+[0;36mskipping: [10.0.193.240][0m
+[0;36mskipping: [10.0.198.182][0m
+[0;36mskipping: [10.0.202.203][0m
+
+TASK [check if there are multiple BGP route reflectors] ******************************************************************************************************
+[0;36mskipping: [10.0.128.115][0m
+[0;36mskipping: [10.0.134.193][0m
+[0;36mskipping: [10.0.136.223][0m
+[0;36mskipping: [10.0.142.250][0m
+[0;36mskipping: [10.0.193.240][0m
+[0;36mskipping: [10.0.198.182][0m
+[0;36mskipping: [10.0.202.203][0m
+
+TASK [check if there is no BGP route reflectors] *************************************************************************************************************
+[0;36mskipping: [10.0.128.115][0m
+[0;36mskipping: [10.0.136.223][0m
+[0;36mskipping: [10.0.134.193][0m
+[0;36mskipping: [10.0.142.250][0m
+[0;36mskipping: [10.0.193.240][0m
+[0;36mskipping: [10.0.198.182][0m
+[0;36mskipping: [10.0.202.203][0m
+
+PLAY RECAP ***************************************************************************************************************************************************
+[0;33m10.0.128.115[0m               : [0;32mok=10  [0m [0;33mchanged=1   [0m unreachable=0    failed=0   
+[0;33m10.0.134.193[0m               : [0;32mok=10  [0m [0;33mchanged=1   [0m unreachable=0    failed=0   
+[0;33m10.0.136.223[0m               : [0;32mok=10  [0m [0;33mchanged=1   [0m unreachable=0    failed=0   
+[0;33m10.0.142.250[0m               : [0;32mok=10  [0m [0;33mchanged=1   [0m unreachable=0    failed=0   
+[0;33m10.0.193.240[0m               : [0;32mok=10  [0m [0;33mchanged=1   [0m unreachable=0    failed=0   
+[0;33m10.0.198.182[0m               : [0;32mok=10  [0m [0;33mchanged=1   [0m unreachable=0    failed=0   
+[0;33m10.0.202.203[0m               : [0;32mok=10  [0m [0;33mchanged=1   [0m unreachable=0    failed=0   
+

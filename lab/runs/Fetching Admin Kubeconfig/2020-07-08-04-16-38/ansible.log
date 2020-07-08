@@ -1,0 +1,35 @@
+To run the Ansible command, you can run:
+export PYTHONPATH=/opt/konvoy/ansible/lib/python3.7/site-packages
+export ANSIBLE_CONFIG=/opt/konvoy/ansible/playbooks/ansible.cfg
+/opt/konvoy/ansible/bin/ansible-playbook /opt/konvoy/ansible/playbooks/fetch-kubeconfig.yaml -i /tmp/konvoy/lab/inventory.yaml --extra-vars {"working_directory":"/tmp/konvoy/lab","rpms_tar_file":"","debs_tar_file":"","certificate_key":"7dd43191aad52c6fa2843bfb9944916c60686a874408b47869e5e831c698f3d8","encryption_token":"RpgqGeXSNr3CinODT6GQGjELhErxyKApzLaiIpv5puo=","keepalived_vrid":47,"node_imagefs_volume_devices":null,"node_labels":null,"node_taints":null,"node_nvidia_gpu":null,"provisioner":"","image_registries_with_auth":null,"default_image_registry":"","default_image_registry_mirrors":null}
+
+Complete environment:
+PATH=/opt/konvoy/ansible/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=ip-172-31-39-232.ec2.internal
+TERM=xterm
+KONVOY_USER_OS=linux
+KUBECONFIG=/home/centos/.kube/config
+KONVOY_EXECUTABLE_DIR=/opt/konvoy/artifacts
+KONVOY_COMMAND_ARG=konvoy
+PROVIDERS_PATH=/opt/konvoy/providers
+TERRAFORM_PLUGINS_PATH=/opt/konvoy/providers/.terraform/plugins-cache
+ANSIBLE_PATH=/opt/konvoy/ansible
+HOME=/home/centos
+PYTHONPATH=/opt/konvoy/ansible/lib/python3.7/site-packages
+ANSIBLE_CONFIG=/opt/konvoy/ansible/playbooks/ansible.cfg
+ANSIBLE_FORCE_COLOR=true
+
+PLAY [Fetch Kubeconfig] **************************************************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************************************
+[0;32mok: [10.0.193.240][0m
+
+TASK [fetch-kubeconfig : fetch admin kubeconfig] *************************************************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+TASK [fetch-kubeconfig : add a warning about modifying admin.conf file] **************************************************************************************
+[0;33mchanged: [10.0.193.240 -> localhost][0m
+
+PLAY RECAP ***************************************************************************************************************************************************
+[0;33m10.0.193.240[0m               : [0;32mok=3   [0m [0;33mchanged=2   [0m unreachable=0    failed=0   
+

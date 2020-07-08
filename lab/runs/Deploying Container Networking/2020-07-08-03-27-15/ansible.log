@@ -1,0 +1,44 @@
+To run the Ansible command, you can run:
+export PYTHONPATH=/opt/konvoy/ansible/lib/python3.7/site-packages
+export ANSIBLE_CONFIG=/opt/konvoy/ansible/playbooks/ansible.cfg
+/opt/konvoy/ansible/bin/ansible-playbook /opt/konvoy/ansible/playbooks/deploy-container-networking.yaml -i inventory.yaml --extra-vars {"working_directory":"/tmp/konvoy/lab","rpms_tar_file":"","debs_tar_file":"","certificate_key":"c94c5e6cacb8dd366c149877c8a057c1ca13f7a04bb38a2a27d08dfeedcc1c9c","encryption_token":"NeNcvFKk/7gwGJAD49Zq6fWM3M+xvj4c52xhuYjsy8c=","keepalived_vrid":239,"node_imagefs_volume_devices":{"control-plane":"xvdb","worker":"xvdb"},"node_labels":{},"node_taints":{},"node_nvidia_gpu":{"worker":false},"provisioner":"aws","image_registries_with_auth":[],"default_image_registry":"","default_image_registry_mirrors":{}} --extra-vars @/tmp/konvoy/lab/runs/Deploying Container Networking/2020-07-08-03-27-15/cluster.yaml
+
+Complete environment:
+PATH=/opt/konvoy/ansible/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=ip-172-31-39-232.ec2.internal
+TERM=xterm
+KUBECONFIG=/home/centos/.kube/config
+KONVOY_EXECUTABLE_DIR=/opt/konvoy/artifacts
+KONVOY_COMMAND_ARG=konvoy
+KONVOY_USER_OS=linux
+PROVIDERS_PATH=/opt/konvoy/providers
+TERRAFORM_PLUGINS_PATH=/opt/konvoy/providers/.terraform/plugins-cache
+ANSIBLE_PATH=/opt/konvoy/ansible
+HOME=/home/centos
+PYTHONPATH=/opt/konvoy/ansible/lib/python3.7/site-packages
+ANSIBLE_CONFIG=/opt/konvoy/ansible/playbooks/ansible.cfg
+ANSIBLE_FORCE_COLOR=true
+
+PLAY [Deploy Container Networking] ***************************************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************************************
+[0;32mok: [10.0.193.240][0m
+
+TASK [container-networking : create container-networking directory] ******************************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+TASK [container-networking : set routeReflectorClusterID] ****************************************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+TASK [container-networking : unset routeReflectorClusterID] **************************************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+TASK [container-networking : copy calico.yaml to remote] *****************************************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+TASK [container-networking : create Calico deployment] *******************************************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+PLAY RECAP ***************************************************************************************************************************************************
+[0;33m10.0.193.240[0m               : [0;32mok=6   [0m [0;33mchanged=5   [0m unreachable=0    failed=0   
+

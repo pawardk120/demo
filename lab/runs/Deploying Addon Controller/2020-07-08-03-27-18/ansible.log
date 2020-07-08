@@ -1,0 +1,44 @@
+To run the Ansible command, you can run:
+export PYTHONPATH=/opt/konvoy/ansible/lib/python3.7/site-packages
+export ANSIBLE_CONFIG=/opt/konvoy/ansible/playbooks/ansible.cfg
+/opt/konvoy/ansible/bin/ansible-playbook /opt/konvoy/ansible/playbooks/deploy-addon-controller.yaml -i inventory.yaml --extra-vars {"working_directory":"/tmp/konvoy/lab","rpms_tar_file":"","debs_tar_file":"","certificate_key":"2b7990f258b227320454b6d2cfb2ca336737816595e26b74489c25cd1ddd40d3","encryption_token":"uobnA7p60/VjSOwlZq6/zJhuLRzzJ9SYX7lTzPnAnVM=","keepalived_vrid":211,"node_imagefs_volume_devices":{"control-plane":"xvdb","worker":"xvdb"},"node_labels":{},"node_taints":{},"node_nvidia_gpu":{"worker":false},"provisioner":"aws","image_registries_with_auth":[],"default_image_registry":"","default_image_registry_mirrors":{}} --extra-vars @/tmp/konvoy/lab/runs/Deploying Addon Controller/2020-07-08-03-27-18/cluster.yaml
+
+Complete environment:
+PATH=/opt/konvoy/ansible/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=ip-172-31-39-232.ec2.internal
+TERM=xterm
+KUBECONFIG=/home/centos/.kube/config
+KONVOY_EXECUTABLE_DIR=/opt/konvoy/artifacts
+KONVOY_COMMAND_ARG=konvoy
+KONVOY_USER_OS=linux
+PROVIDERS_PATH=/opt/konvoy/providers
+TERRAFORM_PLUGINS_PATH=/opt/konvoy/providers/.terraform/plugins-cache
+ANSIBLE_PATH=/opt/konvoy/ansible
+HOME=/home/centos
+PYTHONPATH=/opt/konvoy/ansible/lib/python3.7/site-packages
+ANSIBLE_CONFIG=/opt/konvoy/ansible/playbooks/ansible.cfg
+ANSIBLE_FORCE_COLOR=true
+
+PLAY [Deploy Addon Controller] *******************************************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************************************
+[0;32mok: [10.0.193.240][0m
+
+TASK [addon-controller : get latest crd version] *************************************************************************************************************
+[0;32mok: [10.0.193.240][0m
+
+TASK [addon-controller : clean existing addon crd if exists] *************************************************************************************************
+[0;36mskipping: [10.0.193.240][0m
+
+TASK [addon-controller : create kubeaddons directory] ********************************************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+TASK [addon-controller : copy kubeaddons.yaml to remote] *****************************************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+TASK [addon-controller : deploy the addon controller] ********************************************************************************************************
+[0;33mchanged: [10.0.193.240][0m
+
+PLAY RECAP ***************************************************************************************************************************************************
+[0;33m10.0.193.240[0m               : [0;32mok=5   [0m [0;33mchanged=3   [0m unreachable=0    failed=0   
+

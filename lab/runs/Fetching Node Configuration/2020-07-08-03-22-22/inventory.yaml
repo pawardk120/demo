@@ -1,0 +1,39 @@
+all:
+  vars:
+    version: "v1beta1"
+    order: sorted
+    control_plane_endpoint: "d2iq-workshop-fa75-lb-control-1759962681.us-east-1.elb.amazonaws.com:6443"
+    ansible_user: "centos"
+    ansible_port: 22
+    ansible_ssh_private_key_file: "/tmp/konvoy/lab/d2iq-workshop-ssh.pem"
+
+control-plane:
+  hosts:
+    10.0.193.240:
+      ansible_host: ec2-54-225-60-39.compute-1.amazonaws.com
+      node_pool: control-plane
+    10.0.198.182:
+      ansible_host: ec2-34-234-223-36.compute-1.amazonaws.com
+      node_pool: control-plane
+    10.0.202.203:
+      ansible_host: ec2-3-88-203-216.compute-1.amazonaws.com
+      node_pool: control-plane
+
+node:
+  hosts:
+    10.0.128.115:
+      ansible_host: ec2-54-211-252-149.compute-1.amazonaws.com
+      node_pool: worker
+    10.0.134.193:
+      ansible_host: ec2-35-170-66-220.compute-1.amazonaws.com
+      node_pool: worker
+    10.0.136.223:
+      ansible_host: ec2-3-84-2-141.compute-1.amazonaws.com
+      node_pool: worker
+    10.0.142.250:
+      ansible_host: ec2-3-88-212-5.compute-1.amazonaws.com
+      node_pool: worker
+
+bastion:
+
+

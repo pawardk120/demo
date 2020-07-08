@@ -1,0 +1,77 @@
+To run the Ansible command, you can run:
+export PYTHONPATH=/opt/konvoy/ansible/lib/python3.7/site-packages
+export ANSIBLE_CONFIG=/opt/konvoy/ansible/playbooks/ansible.cfg
+/opt/konvoy/ansible/bin/ansible-playbook /opt/konvoy/ansible/playbooks/deploy-node-labels-taints.yaml -i inventory.yaml --extra-vars {"working_directory":"/tmp/konvoy/lab","rpms_tar_file":"","debs_tar_file":"","certificate_key":"c487974dbd510ab8d9b576c05b74c219aee8cd7991b7346528f19e6732123c03","encryption_token":"5zDKmTnZtUxIFRSEU2VFGpEfNgONxbQiRDb0Bw4YFH8=","keepalived_vrid":4,"node_imagefs_volume_devices":{"control-plane":"xvdb","worker":"xvdb"},"node_labels":{},"node_taints":{},"node_nvidia_gpu":{"worker":false},"provisioner":"aws","image_registries_with_auth":[],"default_image_registry":"","default_image_registry_mirrors":{}} --extra-vars @/tmp/konvoy/lab/runs/Adding Node Labels and Taints/2020-07-08-03-27-10/cluster.yaml
+
+Complete environment:
+PATH=/opt/konvoy/ansible/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=ip-172-31-39-232.ec2.internal
+TERM=xterm
+KUBECONFIG=/home/centos/.kube/config
+KONVOY_EXECUTABLE_DIR=/opt/konvoy/artifacts
+KONVOY_COMMAND_ARG=konvoy
+KONVOY_USER_OS=linux
+PROVIDERS_PATH=/opt/konvoy/providers
+TERRAFORM_PLUGINS_PATH=/opt/konvoy/providers/.terraform/plugins-cache
+ANSIBLE_PATH=/opt/konvoy/ansible
+HOME=/home/centos
+PYTHONPATH=/opt/konvoy/ansible/lib/python3.7/site-packages
+ANSIBLE_CONFIG=/opt/konvoy/ansible/playbooks/ansible.cfg
+ANSIBLE_FORCE_COLOR=true
+
+PLAY [Label and Taint Nodes] *********************************************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************************************
+[0;32mok: [10.0.128.115][0m
+[0;32mok: [10.0.198.182][0m
+[0;32mok: [10.0.134.193][0m
+[0;32mok: [10.0.142.250][0m
+[0;32mok: [10.0.136.223][0m
+[0;32mok: [10.0.193.240][0m
+[0;32mok: [10.0.202.203][0m
+
+TASK [label-and-taint-nodes : label nodes with Konvoy defined labels] ****************************************************************************************
+[0;33mchanged: [10.0.128.115 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+[0;33mchanged: [10.0.134.193 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+[0;33mchanged: [10.0.136.223 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+[0;33mchanged: [10.0.142.250 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+[0;33mchanged: [10.0.193.240 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+[0;33mchanged: [10.0.198.182 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+[0;33mchanged: [10.0.202.203 -> ec2-54-225-60-39.compute-1.amazonaws.com][0m
+
+TASK [label-and-taint-nodes : label nodes with user defined labels] ******************************************************************************************
+[0;36mskipping: [10.0.128.115][0m
+[0;36mskipping: [10.0.134.193][0m
+[0;36mskipping: [10.0.136.223][0m
+[0;36mskipping: [10.0.142.250][0m
+[0;36mskipping: [10.0.193.240][0m
+[0;36mskipping: [10.0.198.182][0m
+[0;36mskipping: [10.0.202.203][0m
+
+TASK [label-and-taint-nodes : taint nodes with user defined taints] ******************************************************************************************
+[0;36mskipping: [10.0.128.115][0m
+[0;36mskipping: [10.0.134.193][0m
+[0;36mskipping: [10.0.136.223][0m
+[0;36mskipping: [10.0.142.250][0m
+[0;36mskipping: [10.0.193.240][0m
+[0;36mskipping: [10.0.198.182][0m
+[0;36mskipping: [10.0.202.203][0m
+
+TASK [label-and-taint-nodes : label nodes with Nvidia GPU device] ********************************************************************************************
+[0;36mskipping: [10.0.128.115][0m
+[0;36mskipping: [10.0.134.193][0m
+[0;36mskipping: [10.0.136.223][0m
+[0;36mskipping: [10.0.142.250][0m
+[0;36mskipping: [10.0.193.240][0m
+[0;36mskipping: [10.0.198.182][0m
+[0;36mskipping: [10.0.202.203][0m
+
+PLAY RECAP ***************************************************************************************************************************************************
+[0;33m10.0.128.115[0m               : [0;32mok=2   [0m [0;33mchanged=1   [0m unreachable=0    failed=0   
+[0;33m10.0.134.193[0m               : [0;32mok=2   [0m [0;33mchanged=1   [0m unreachable=0    failed=0   
+[0;33m10.0.136.223[0m               : [0;32mok=2   [0m [0;33mchanged=1   [0m unreachable=0    failed=0   
+[0;33m10.0.142.250[0m               : [0;32mok=2   [0m [0;33mchanged=1   [0m unreachable=0    failed=0   
+[0;33m10.0.193.240[0m               : [0;32mok=2   [0m [0;33mchanged=1   [0m unreachable=0    failed=0   
+[0;33m10.0.198.182[0m               : [0;32mok=2   [0m [0;33mchanged=1   [0m unreachable=0    failed=0   
+[0;33m10.0.202.203[0m               : [0;32mok=2   [0m [0;33mchanged=1   [0m unreachable=0    failed=0   
+
